@@ -1,0 +1,30 @@
+[
+    {
+        "_id":1,
+        "name":"Monsti",
+        "power":5,
+        "birthdate" : 1304375948024,
+        "enemies":[
+            {"name":"Charli", "type":"Cat"},
+            {"name":"Marli", "type":"Alien"},
+            {"name":"Bharli", "type":"Alien"}
+        ]
+    },
+    {
+        "_id":2,
+        "name":"Putsi",
+        "power":5,
+        "birthdate" : 1304375948011,
+        "enemies":[
+        ]
+    },
+    {
+        "_id":3,
+        "name":"Bobo",
+        "power":4,
+        "miles":1111,
+        "birthdate" : 1304375948011,
+        "enemies":[
+        ]
+    }
+]
