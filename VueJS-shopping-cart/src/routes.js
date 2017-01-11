@@ -6,6 +6,7 @@ import Signup from './components/signup';
 import Shop from './components/shop';
 import Cart from './components/cart';
 import Admin from './components/admin/admin';
+import Main from './components/main/main';
 
 const routes = [{
   path     : '/',
@@ -35,6 +36,11 @@ const routes = [{
     path     : '/admin',
     name     : 'admin',
     component: Admin
+  },
+  {
+    path     : '/main',
+    name     : 'main',
+    component: Main
   },
   
   { path: '*', redirect: { name: 'home' } }];
