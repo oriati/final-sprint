@@ -1,6 +1,7 @@
 import './style.scss';
 import './vendor';
 import './vue-plugins';
+import '../../html5up-photon/assets/css/main.css';
 
 import Vue from 'vue';
 import store from './store';

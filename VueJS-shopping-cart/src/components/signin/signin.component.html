@@ -9,8 +9,8 @@
         <form class="form-signin" novalidate @submit.prevent="signin(user)">
 
           <div class="form-group" :class="{'has-error': errors.has('user.email') }">
-            <input type="email" class="form-control" placeholder="Email" autofocus v-model="user.email"
-                   v-validate.initial="user.email" data-vv-rules="required|email">
+            <input type="text" class="form-control" placeholder="Email" autofocus v-model="user.email"
+                   v-validate.initial="user.email" data-vv-rules="required">
           </div>
 
 

@@ -205,7 +205,7 @@ app.post('/login', function (req, res) {
 				cl('Login Succesful');
                 delete user.pass;
 				req.session.user = user;  //refresh the session value
-				res.json({token: 'Beareloginr: puk115th@b@5t', user});
+				res.json({token: 'Beareloginr: puk115th@b@5t', user, role : user.role});
 			} else {
 				cl('Login NOT Succesful');
 				req.session.user = null;

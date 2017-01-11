@@ -1,3 +1,4 @@
+import ContactForm from '../contact-form/contact-form.vue'
 export default  {
   data: () => {
     return {
@@ -6,5 +7,8 @@ export default  {
   },
   methods : {
 
+  },
+  components : {
+     ContactForm
   }
 }
