@@ -9,9 +9,9 @@ import Vue from 'vue';
 function signin( {email,password} ) {
   return Vue.http.post('http://localhost:3003/login', {username: email, pass: password} )
     .then(res => res.json())
-    .then(({token, user}) => {
-      console.log('Signedin user:', user);
-      setSession(token, user);
+    .then(({token, user, role}) => {
+      console.log('Signedin user:', user, role);
+      setSession(token, user, role);
       return user;
     })
 
@@ -53,9 +53,10 @@ function signup( { email, password } ) {
  *
  * @param token
  */
-function setSession( token, user ) {
+function setSession( token, user, role ) {
   localStorage.setItem('token', token);
   localStorage.setItem('user', JSON.stringify(user));
+  localStorage.setItem('role', role);
 }
 
 /**
@@ -64,6 +65,7 @@ function setSession( token, user ) {
 function signout() {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
+  localStorage.removeItem('role');
 }
 
 /**

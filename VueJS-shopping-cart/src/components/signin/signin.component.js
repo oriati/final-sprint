@@ -8,7 +8,7 @@ export default  {
   },
   data   : () => {
     return {
-      user : { email: 'stam@stam.st', password: '123456' },
+      user : { email: 'ori', password: '1234' },
       error: ""
     }
   },
