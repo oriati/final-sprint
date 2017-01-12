@@ -54,7 +54,12 @@
 
     },
     components: {
-      headerComp, footerComp, iconsTextComp, signupComp, imgTextComp, galleryComp,
+      headerComp, 
+      footerComp, 
+      iconsTextComp, 
+      signupComp, 
+      imgTextComp, 
+      galleryComp,
     }
 }
 </script>

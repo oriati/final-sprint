@@ -1,5 +1,5 @@
 <template>
-    <section id="three" class="main special" :class="sectionClass">
+    <section id="three" class="main special">
         <div class="container">
             <header class="major">
                 <h2>{{heading}}</h2>
@@ -41,7 +41,6 @@ export default  {
     props: [],
     data() {
       return {
-          sectionClass: 'border',
           heading: 'This is the gallery heading',
           subHeading: 'This is the gallery sub-heading',
           gallery1: {
