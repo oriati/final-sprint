@@ -1,4 +1,4 @@
-const compsTeplatesInterfaces = [{
+const compsTemplatesInterfaces = [{
   'header-comp': {
           heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
           subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
