@@ -2,7 +2,7 @@
     <section id="four" class="main style2 special">
         <div class="container">
             <header class="major">
-                <h2>{{CTA}}</h2>
+                <h2>{{cta}}</h2>
             </header>
             <p>{{subHeading}}</p>
             <ul class="actions uniform">
@@ -15,11 +15,11 @@
 
 <script>
 export default  {
-    name: 'img-text-comp',
+    name: 'signup-comp',
     props: [],
     data() {
       return {
-          CTA: 'This is a Call to Action!!!',
+          cta: 'This is a Call to Action!!!',
           subHeading: 'This is a sub-heading. Adipiscing a commodo ante nunc',
           button1Text: 'Sign Up',
           button2Text: 'Learn More'
