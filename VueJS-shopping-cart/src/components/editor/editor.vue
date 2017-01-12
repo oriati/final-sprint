@@ -1,16 +1,25 @@
 <template lang="html">
-  <section class="editor container below-nav">
+  <div class="editor container below-nav">
     <h1>editor Component</h1>
-    <header-comp></header-comp>
+
+    <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
+
+    <div v-for="comp in getComps">
+      <component :is="comp.type" :propsData="getComps[0].props"></component>
+    </div>
+
+    <!--<header-comp></header-comp>-->
     <gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
     <signup-comp></signup-comp>
     <footer-comp></footer-comp>
-  </section>
+  </div>
 </template>
 
 <script lang="js">
+  import { mapGetters } from 'vuex'
+
   // import authService from '../../services/auth.service';
     import footerComp from '../template-components/footer-comp';
     import galleryComp from '../template-components/gallery-comp';
@@ -25,6 +34,14 @@
     beforeRouteEnter ( to, from, next ) {
       authService.protectRoute(next);
     },    
+    computed: {
+      // heading () {
+      //   return this.$store.getters.heading;
+      // }
+      ...mapGetters([
+        'getComps',
+      ])
+    },
     mounted() {
 
     },
@@ -34,9 +51,6 @@
       }
     },
     methods: {
-
-    },
-    computed: {
 
     },
     components: {
