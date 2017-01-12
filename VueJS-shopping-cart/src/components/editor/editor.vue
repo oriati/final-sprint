@@ -4,11 +4,12 @@
 
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
 
-    <div v-for="comp in getComps">
-      <component :is="comp.type" :propsData="getComps[0].props"></component>
+    <div v-for="(comp, index) in getComps">
+      <component :is="comp.type" :propsData="getComps[index].props"></component>
+    <add-component :index="index"></add-component>
     </div>
 
-    <!--<header-comp></header-comp>-->
+    <header-comp></header-comp>
     <gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
@@ -27,6 +28,8 @@
     import iconsTextComp from '../template-components/icons-text-comp';
     import imgTextComp from '../template-components/img-text-comp';
     import signupComp from '../template-components/signup-comp';
+
+    import addComponent from '../add-component/add-component';
 
   export default  {
     name: 'editor',
@@ -60,6 +63,7 @@
       signupComp, 
       imgTextComp, 
       galleryComp,
+      addComponent
     }
 }
 </script>
