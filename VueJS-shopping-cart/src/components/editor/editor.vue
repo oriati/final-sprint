@@ -12,12 +12,12 @@
 
 <script lang="js">
   // import authService from '../../services/auth.service';
-    import footerComp from '../../../../components/template-components/footer-comp';
-    import galleryComp from '../../../../components/template-components/gallery-comp';
-    import headerComp from '../../../../components/template-components/header-comp';
-    import iconsTextComp from '../../../../components/template-components/icons-text-comp';
-    import imgTextComp from '../../../../components/template-components/img-text-comp';
-    import signupComp from '../../../../components/template-components/signup-comp';
+    import footerComp from '../template-components/footer-comp';
+    import galleryComp from '../template-components/gallery-comp';
+    import headerComp from '../template-components/header-comp';
+    import iconsTextComp from '../template-components/icons-text-comp';
+    import imgTextComp from '../template-components/img-text-comp';
+    import signupComp from '../template-components/signup-comp';
 
   export default  {
     name: 'editor',

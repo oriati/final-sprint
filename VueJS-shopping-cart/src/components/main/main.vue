@@ -10,8 +10,8 @@
 
 <script lang="js">
   // import authService from '../../../services/auth.service';
-  import toolbar from '../main/components/toolbar';
-  import editor from '../main/components/editor/editor';
+  import toolbar from '../toolbar/toolbar';
+  import editor from '../editor/editor';
 
   export default  {
     name: 'main',
