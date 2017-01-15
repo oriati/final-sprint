@@ -1,37 +1,17 @@
-<nav class="navbar navbar-default">
-  <section class="container">
-    <div class="navbar-header" style="margin-top: -4px;">
-      <router-link to="/" class="navbar-brand" exact>Coding Academy</router-link>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li>
-          <router-link :to="{ name: 'shop' }">Shop</router-link>
-        </li>
-        <li>
-          <router-link :to="{name: 'cart'}">My Cart</router-link>
-        </li>
-        <li>
-          <router-link :to="{name: 'admin'}">Admin</router-link>
-        </li>
-        <li>
-          <router-link :to="{name: 'main'}">Main</router-link>
-        </li>
-
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li v-if="!isLoggedIn">
-          <router-link :to="{ name: 'signin' }">Sign in</router-link>
-        </li>
-        <li v-if="!isLoggedIn">
-          <router-link :to="{ name: 'signup' }">Sign up</router-link>
-        </li>
-        <li v-if="isLoggedIn">
-          <a href="#" @click="signout">Sign out</a>
-        </li>
-        <li v-if="isLoggedIn">
-          <img src="~assets/profile.png" :title="user.username" class="profile-img" />
-        </li>
+<!--<nav class="navbar navbar-default">-->
+  <section>
+    <v-navbar class="green">
+      <v-navbar-logo class="hidden-sm-and-down"><router-link to="/" class="navbar-brand" exact>Build-a-site</router-link></v-navbar-logo>
+      <v-navbar-items><router-link :to="{ name: 'shop' }">Shop</router-link></v-navbar-items>
+      <v-navbar-items><router-link :to="{name: 'cart'}">My Cart</router-link></v-navbar-items>
+      <v-navbar-items><router-link :to="{name: 'admin'}">Admin</router-link></v-navbar-items>
+      <v-navbar-items><router-link :to="{name: 'main'}">Main</router-link></v-navbar-items>
+      <v-navbar-items><router-link v-if="!isLoggedIn" :to="{ name: 'signin' }">Sign in</router-link></v-navbar-items>
+      <v-navbar-items><router-link v-if="!isLoggedIn" :to="{ name: 'signup' }">Sign up</router-link></v-navbar-items>
+      <v-navbar-items><a v-if="isLoggedIn" href="#" @click="signout">Sign out</a></v-navbar-items>
+      <!--<v-navbar-items v-bind:items="items"><img v-if="isLoggedIn" src="~assets/profile.png" :title="user.username" class="profile-img" /></v-navbar-items>-->
+    </v-navbar>
+          <!--<img v-if="isLoggedIn" src="~assets/profile.png" :title="user.username" class="profile-img" />-->
 
         <li class="dropdown" v-if="cartLength">
           <a href="#" class="dropdown-toggle">
