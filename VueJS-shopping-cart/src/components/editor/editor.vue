@@ -13,7 +13,7 @@
 
    
 
-    <gallery-comp></gallery-comp>
+    <!--<gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
     <signup-comp></signup-comp>
