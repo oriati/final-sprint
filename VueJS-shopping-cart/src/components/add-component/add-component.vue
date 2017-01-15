@@ -3,52 +3,53 @@
         <h4>Add Component</h4>
         <div class="form-group">
             <label for="sel1">Component to add:</label>
-            <select class="form-control">
-                <option value="" name="">Component 1</option>
-                <option value="" name="">Component 2</option>
-                <option value="" name="">Component 3</option>
-                <option value="" name="">Component 4</option>
+            <select class="form-control" v-model="selected">
+                <option v-for="temp in templates.compsTemplatesInterfaces" name="">
+                    {{temp.name}}
+                </option>
             </select>
-            <button type="" @click="addComponent">Add!</button>
+            {{selected}}
+            <button type="" @click="addComponent(selected)">Add!</button>
         </div>
-<v-card class="blue darken-1 white--text">
-  <v-card-text>
-    <div>This is text inside the card</div>
-  </v-card-text>
-</v-card>
     </section>
 </template>
 <script lang="js">
-  // import authService from '../../services/auth.service';
+    // import authService from '../../services/auth.service';
+    import { mapActions } from 'vuex'
+    import templates from '../../interface/comp.templates';
 
-  export default  {
-    name: 'add-component',
-    props: ['index'],
-    // beforeRouteEnter ( to, from, next ) {
-    //   authService.protectRoute(next);
-    // },    
-    mounted() {
+    export default {
+        name: 'add-component',
+        props: ['index'],
+        // beforeRouteEnter ( to, from, next ) {
+        //   authService.protectRoute(next);
+        // },    
+        mounted() {
 
-    },
-    data() {
-      return {
+        },
+        data() {
+            return {
+                selected: 'Choose a component',
+                templates: templates,
 
-      }
-    },
-    methods: {
-        addComponent(){
+            }
+        },
+        methods: {
+            addComponent() {
+            this.$store.dispatch('addComponent', this.selected)
+            console.log('this.selected', this.selected);
             
         }
     },
     computed: {
 
     }
-}
+    }
 </script>
 
 <style scoped lang="scss">
   .add-component {
-      border: 4px dashed lightcoral;
+      border: 4px dashed lightseagreen;
       padding: 20px;
       margin: 0 auto;
       text-align: center;

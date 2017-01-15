@@ -6,15 +6,15 @@
 
     <div v-for="(comp, index) in getComps">
       <component :is="comp.type" :propsData="getComps[index].props"></component>
-    <add-component :index="index"></add-component>
+    <add-component :index="index" ></add-component>
     </div>
-
+<!--
     <header-comp></header-comp>
     <gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
     <signup-comp></signup-comp>
-    <footer-comp></footer-comp>
+    <footer-comp></footer-comp>-->
   </div>
 </template>
 
@@ -30,6 +30,7 @@
     import signupComp from '../template-components/signup-comp';
 
     import addComponent from '../add-component/add-component';
+
 
   export default  {
     name: 'editor',
@@ -50,7 +51,7 @@
     },
     data() {
       return {
-
+        // templates: { templates },
       }
     },
     methods: {
