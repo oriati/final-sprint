@@ -1,6 +1,7 @@
 <template>
     <section id="header">
         <div class="inner">
+            <slot></slot>
             <span class="icon major fa-cloud"></span>
             <h1>{{propsData.heading}}</h1>
             <p>{{propsData.subHeading}}</p>
