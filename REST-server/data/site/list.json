@@ -1,0 +1,29 @@
+
+    {
+        "_id": null,
+        "name": "",
+        "url": "",
+        "isPublished": false,
+        "comps": [
+            {
+                "_id": "",
+                "name": "",
+                "type": "header-comp",
+                "props": {
+                    "heading": "This is a heading",
+                    "subHeading": "This is a sub-heading. Adipiscing a commodo ante",
+                    "buttonText": "Make this button whatever you want!"
+                }
+            },
+            {
+                "_id": "",
+                "name": "",
+                "type": "img-text-comp",
+                "props": {
+                    "heading": "This is a heading",
+                    "subHeading": "This is a sub-heading. Adipiscing a commodo ante",
+                    "imgSrc": "http://placehold.it/450x280"
+                }
+            }
+        ]
+    }
