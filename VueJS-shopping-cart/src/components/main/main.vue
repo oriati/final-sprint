@@ -19,12 +19,14 @@
     // beforeRouteEnter ( to, from, next ) {
     //   authService.protectRoute(next);
     // },    
+    created() {
+        this.$store.dispatch('getSite');
+    },
     mounted() {
 
     },
     data() { 
       return {
-
       }
     },
     methods: {

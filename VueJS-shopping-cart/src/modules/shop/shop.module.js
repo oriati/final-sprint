@@ -24,7 +24,7 @@ const actions = {
       commit(GET_PRODUCTS_ERROR, err);
     });
   }
-}
+} 
 
 const mutations = {
   [GET_PRODUCTS]( state ) {

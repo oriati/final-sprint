@@ -11,12 +11,13 @@
       <add-component :index="index"></add-component>
     </div>
 
+   
 
     <gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
     <signup-comp></signup-comp>
-    <footer-comp></footer-comp>
+    <footer-comp></footer-comp>-->
   </div>
 </template>
 
@@ -52,7 +53,7 @@
     },
     data() {
       return {
-
+        // templates: { templates },
       }
     },
     methods: {
