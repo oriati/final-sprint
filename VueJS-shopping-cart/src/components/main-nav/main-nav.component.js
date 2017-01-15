@@ -7,7 +7,9 @@ export default {
   name    : 'main-nav',
   methods : {
     signout() {
-      authService.signout();
+      // ask yaron about session reset and logout
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       this.$store.commit(SIGN_OUT);
       this.$router.push('/');
     },

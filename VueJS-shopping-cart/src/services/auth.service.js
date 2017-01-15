@@ -14,8 +14,6 @@ function signin( {email,password} ) {
       setSession(token, user, role);
       return user;
     })
-
-
 }
 // function signinDummy( { email, password } ) {
 //   return new Promise(( resolve, reject ) => {
