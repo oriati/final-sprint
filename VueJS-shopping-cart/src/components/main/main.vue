@@ -25,7 +25,7 @@
     mounted() {
 
     },
-    data() {
+    data() { 
       return {
       }
     },

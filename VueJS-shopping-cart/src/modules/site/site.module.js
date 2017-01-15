@@ -1,6 +1,8 @@
-import Vue from 'vue';
+export const DELETE_COMP = 'store/DELETE_COMP';
 export const ADD_COMPONENT = 'store/ADD_COMPONENT';
 export const GET_SITE = 'store/GET_SITE';
+
+import Vue from 'vue';
 
 
 const state = {
@@ -34,7 +36,12 @@ const actions = {
   }
 
 const mutations = {
-  ADD_COMPONENT( state, compType ){
+  [DELETE_COMP](state, {index} ) {
+    console.log('deleting component ', index);
+    
+
+  },
+  [ADD_COMPONENT]( state, compType ){
         console.log('mutation:', compType);
             state.comps.push({
                 _id: '',
@@ -47,7 +54,17 @@ const mutations = {
                     }
             })
         }
+
 }
+const actions = {
+  deleteComp ({commit},index){
+    commit(DELETE_COMP, {index})
+    console.log('commiting delete- comp ',{index});
+
+    
+  }
+}
+
 
 const getters = {
         // heading: state => state.comps.props.heading

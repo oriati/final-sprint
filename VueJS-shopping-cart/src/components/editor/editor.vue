@@ -5,12 +5,13 @@
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
 
     <div v-for="(comp, index) in getComps">
-      <component :is="comp.type" :propsData="getComps[index].props"></component>
-
-    <add-component :index="index" ></add-component>
+      <component :is="comp.type" :propsData="getComps[index].props">
+        <button @click="deleteComp(index)">X</button>
+      </component>
+      <add-component :index="index"></add-component>
     </div>
-<!--
-    <header-comp></header-comp>
+
+   
 
     <gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
@@ -33,16 +34,11 @@
 
   import addComponent from '../add-component/add-component';
 
-
   export default {
-
     name: 'editor',
     props: [],
     beforeRouteEnter(to, from, next) {
       authService.protectRoute(next);
-    },
-    created() {
-
     },
     computed: {
       // heading () {
@@ -61,7 +57,13 @@
       }
     },
     methods: {
-
+      deleteComp(index) {
+        // this.$store.dispatch('deleteComp', index)     
+        this.$store.dispatch({
+          type: 'deleteComp',
+          index: index
+        })
+      }
     },
     components: {
       headerComp,
