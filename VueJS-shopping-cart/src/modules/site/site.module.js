@@ -12,7 +12,7 @@ const actions = {
     Vue.http.post('http://localhost:3003/site', {owner: currUser.username})
       .then(res => res.json())
       .then(site => {
-        console.log('site', site);
+        console.log('site module', site);
         commit(GET_SITE, site);
       })
       }
@@ -20,8 +20,8 @@ const actions = {
 
 const mutations = {
   [GET_SITE](state, site) {
-    console.log('goob',site);
-    state.site = site;
+    // when we switch to multiple sites per user we need to adress this [0]
+    state.site = site[0];
   }
 }
 

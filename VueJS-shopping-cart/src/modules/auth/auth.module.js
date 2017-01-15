@@ -23,14 +23,11 @@ const actions = {
   signin({commit}, {email, password} ) {
     // return is here just so that the signin component will get a promise for a .then and .catch asynchronously
     return Vue.http.post('http://localhost:3003/login', {username: email, pass: password} )
-    // Vue.http.post('http://localhost:3003/login', {username: email, pass: password} )
       .then(res => res.json())
-      .then(({token, user, role}) => {
-        commit(SIGN_IN, user);
-        console.log('store', state.user);
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        // return (token, user);
+      .then(res => {
+        commit(SIGN_IN, res.user);
+        console.log('store', state.user, res);
+        return (res);
       })
   }
 };

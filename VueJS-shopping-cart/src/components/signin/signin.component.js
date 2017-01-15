@@ -19,10 +19,11 @@ export default {
       if (this.errors.any()) return;
 
       this.$store.dispatch('signin', user)
-        .then(res => {
-        //   console.log('component', user);
-        //   localStorage.setItem('token', token);
-        //   localStorage.setItem('user', JSON.stringify(user));
+        .then(({ token, user}) => {
+          console.log('component', user);
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(user));
+          // needs to push router to where ever we let user pick between his sites
           this.$router.push('main')
         })
     }
