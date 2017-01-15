@@ -6,10 +6,12 @@
 
     <div v-for="(comp, index) in getComps">
       <component :is="comp.type" :propsData="getComps[index].props"></component>
-      <add-component :index="index"></add-component>
-    </div>
 
-    <!--<header-comp></header-comp>
+    <add-component :index="index" ></add-component>
+    </div>
+<!--
+    <header-comp></header-comp>
+
     <gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
@@ -31,7 +33,9 @@
 
   import addComponent from '../add-component/add-component';
 
+
   export default {
+
     name: 'editor',
     props: [],
     beforeRouteEnter(to, from, next) {
@@ -53,7 +57,7 @@
     },
     data() {
       return {
-
+        // templates: { templates },
       }
     },
     methods: {
