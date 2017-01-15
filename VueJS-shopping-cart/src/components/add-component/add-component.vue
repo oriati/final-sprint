@@ -5,9 +5,17 @@
             <label for="sel1">Component to add:</label>
             <select class="form-control">
                 <option value="" name="">Component 1</option>
+                <option value="" name="">Component 2</option>
+                <option value="" name="">Component 3</option>
+                <option value="" name="">Component 4</option>
             </select>
             <button type="" @click="addComponent">Add!</button>
         </div>
+<v-card class="blue darken-1 white--text">
+  <v-card-text>
+    <div>This is text inside the card</div>
+  </v-card-text>
+</v-card>
     </section>
 </template>
 <script lang="js">
