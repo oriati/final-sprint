@@ -3,8 +3,6 @@ import VueRouter from 'vue-router';
 import Home from './components/home';
 import Signin from './components/signin';
 import Signup from './components/signup';
-import Shop from './components/shop';
-import Cart from './components/cart';
 import Admin from './components/admin/admin';
 import Main from './components/main/main';
 
@@ -21,16 +19,6 @@ const routes = [{
     path     : '/signup',
     name     : 'signup',
     component: Signup
-  },
-  {
-    path     : '/shop',
-    name     : 'shop',
-    component: Shop
-  },
-  {
-    path     : '/cart',
-    name     : 'cart',
-    component: Cart
   },
   {
     path     : '/admin',

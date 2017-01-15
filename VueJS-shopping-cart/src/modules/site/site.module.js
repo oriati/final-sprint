@@ -4,7 +4,6 @@ export const GET_SITE = 'store/GET_SITE';
 
 import Vue from 'vue';
 
-
 const state = {
    _id: null,
    name: '',
@@ -35,8 +34,8 @@ const actions = {
     console.log('commiting delete- comp ',{index});
   },
     addComponent({commit}, compType){
-            commit(ADD_COMPONENT, compType)
-            console.log('action:', compType);         
+            console.log('action:', compType)      
+            commit(ADD_COMPONENT, compType);
         }
   }
 
