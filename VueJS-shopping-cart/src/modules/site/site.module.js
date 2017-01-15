@@ -1,20 +1,28 @@
+import Vue from 'vue';
 export const ADD_COMPONENT = 'store/ADD_COMPONENT';
+export const GET_SITE = 'store/GET_SITE';
+
 
 const state = {
-  _id: null,
-  name: '',
-  url: '',
-  isPublished: false,
-  comps: [{
-    _id: '',
-    name: '',
-    type: 'header-comp',
-    props: {
-          heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
-          subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
-          buttonText: 'Make this button whatever you want!'
-        }
-  }]
+  site: {}
+}
+
+const actions = {
+  getSite ({ commit }) {
+    Vue.http.get('http://localhost:3003/data/site')
+      .then(res => res.json())
+      .then(site => {
+        // console.log('site', site);
+        commit(GET_SITE, site);
+      })
+      }
+}
+
+const mutations = {
+  [GET_SITE](state, site) {
+    // console.log('goob',site);
+    state.site = site[0];
+  }
 }
 
 const actions = {
@@ -43,7 +51,7 @@ const mutations = {
 
 const getters = {
         // heading: state => state.comps.props.heading
-        getComps: state => state.comps
+        getComps: state => state.site.comps
     }
 
 export default {
