@@ -20,7 +20,8 @@
     //   authService.protectRoute(next);
     // },    
     created() {
-        this.$store.dispatch('getSite');
+        // gets the users sites from server
+        // this.$store.dispatch('getSite');
     },
     mounted() {
 

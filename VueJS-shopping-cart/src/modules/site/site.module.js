@@ -6,19 +6,19 @@ import Vue from 'vue';
 
 const state = {
   site: {
-  //  _id: null,
-  //  name: '',
-  //  url: '',
-  //  isPublished: false,
-  //  comps: [{
-  //    name: '',
-  //    type: 'header-comp',
-  //    props: {
-  //          heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
-  //          subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
-  //         buttonText: 'Make this button whatever you want!'
-  //        }
-  //  }]
+   _id: null,
+   name: '',
+   url: '',
+   isPublished: false,
+   comps: [{
+     name: '',
+     type: 'header-comp',
+     props: {
+           heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
+           subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
+          buttonText: 'Make this button whatever you want!'
+         }
+   }]
   }
 }
 
