@@ -1,31 +1,31 @@
-import authService from '../../services/auth.service';
-import {SIGN_IN, SIGN_OUT} from '../../modules/auth/auth.module';
+// import authService from '../../services/auth.service';
+import { SIGN_IN, SIGN_OUT } from '../../modules/auth/auth.module';
 
-export default  {
+export default {
   mounted() {
     // console.log(this.$router);
     // console.log(this.$route);
   },
-  data   : () => {
+  data: () => {
     return {
-      user : { email: 'ori', password: '1234' },
+      user: { email: 'ogen@derp.com', password: '123456' },
       error: ""
     }
   },
   methods: {
-    signin( user ) {
+    signin(user) {
+      console.log('component', user);
       this.$validator.validateAll();
-      if( this.errors.any() ) return;
+      if (this.errors.any()) return;
 
-      authService.signin(user).then(res => {
-        this.$store.commit(SIGN_IN, res);
-        this.$router.go(-1);
-      }).catch(err => {
-        err.json().then(res => this.error = res.error);
-      })
-
+      this.$store.dispatch('signin', user)
+        .then(({ token, user}) => {
+          console.log('component', user);
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(user));
+          // needs to push router to where ever we let user pick between his sites
+          this.$router.push('main')
+        })
     }
   }
 }
-
-

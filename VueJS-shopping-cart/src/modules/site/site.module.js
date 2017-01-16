@@ -21,11 +21,13 @@ const state = {
 }
 
 const actions = {
+  // need to figure out what to do with the store. seems like user in needed in both modules and this currUser variable is only a bandade
   getSite ({ commit }) {
-    Vue.http.get('http://localhost:3003/data/site')
+    let currUser = JSON.parse(localStorage.getItem('user'));
+    Vue.http.post('http://localhost:3003/site', {owner: currUser.username})
       .then(res => res.json())
       .then(site => {
-        // console.log('site', site);
+        console.log('site module', site);
         commit(GET_SITE, site);
       })
   },
@@ -42,7 +44,7 @@ const actions = {
 
 const mutations = {
   [GET_SITE](state, site) {
-    // console.log('goob',site);
+    // when we switch to multiple sites per user we need to adress this [0]
     state.site = site[0];
   },
   [DELETE_COMP](state, {index} ) {
