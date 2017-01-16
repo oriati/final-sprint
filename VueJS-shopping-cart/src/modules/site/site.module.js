@@ -5,19 +5,21 @@ export const GET_SITE = 'store/GET_SITE';
 import Vue from 'vue';
 
 const state = {
-   _id: null,
-   name: '',
-   url: '',
-   isPublished: false,
-   comps: [{
-     name: '',
-     type: 'header-comp',
-     props: {
-           heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
-           subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
-          buttonText: 'Make this button whatever you want!'
-         }
-   }]
+  site: {
+  //  _id: null,
+  //  name: '',
+  //  url: '',
+  //  isPublished: false,
+  //  comps: [{
+  //    name: '',
+  //    type: 'header-comp',
+  //    props: {
+  //          heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
+  //          subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
+  //         buttonText: 'Make this button whatever you want!'
+  //        }
+  //  }]
+  }
 }
 
 const actions = {
@@ -49,11 +51,11 @@ const mutations = {
   },
   [DELETE_COMP](state, {index} ) {
     console.log('deleting component ', index);
-    state.comps.splice(index, 1 );
+    state.site.comps.splice(index, 1 );
   },
   [ADD_COMPONENT]( state, compType ){
         console.log('mutation:', compType);
-            state.comps.push({
+            state.site.comps.push({
                 _id: '',
                 name: '',
                 type: compType,
@@ -68,7 +70,7 @@ const mutations = {
 }
 const getters = {
         // heading: state => state.comps.props.heading
-        getComps: state => state.comps
+        getComps: state => state.site.comps
     }
 
 export default {
