@@ -5,6 +5,7 @@ export const GET_SITE = 'store/GET_SITE';
 import Vue from 'vue';
 
 const state = {
+
   site: {
    _id: null,
    name: '',
@@ -33,26 +34,27 @@ const actions = {
         commit(GET_SITE, site);
       })
   },
-   deleteComp ({commit},index){
-    commit(DELETE_COMP, {index})
-    console.log('commiting delete- comp ',{index});
+  deleteComp({commit}, index) {
+    commit(DELETE_COMP, { index })
+    console.log('commiting delete- comp ', { index });
   },
-    addComponent({commit}, compType){
-            console.log('action:', compType)      
-            commit(ADD_COMPONENT, compType);
+  addComponent({commit}, compType) {
+          console.log('action:', compType)
+    commit(ADD_COMPONENT, compType);
 
-        }
   }
+}
 
 const mutations = {
   [GET_SITE](state, site) {
     // when we switch to multiple sites per user we need to adress this [0]
     state.site = site[0];
   },
-  [DELETE_COMP](state, {index} ) {
+  [DELETE_COMP](state, {index}) {
     console.log('deleting component ', index);
     state.site.comps.splice(index, 1 );
   },
+
   [ADD_COMPONENT]( state, compType ){
         console.log('mutation:', compType);
             state.site.comps.push({

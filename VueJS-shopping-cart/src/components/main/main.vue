@@ -1,7 +1,7 @@
 <template lang="html">
 
   <section class="main container below-nav">
-    <h1>main Component</h1>
+    <!--<h1>main Component</h1>-->
     <toolbar></toolbar>
     <editor></editor>
   </section>

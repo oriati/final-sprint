@@ -1,12 +1,15 @@
 <template lang="html">
   <div class="editor container below-nav">
-    <h1>editor Component</h1>
+    <!--<h1>editor Component</h1>-->
 
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
 
     <div v-for="(comp, index) in getComps">
-      <component :is="comp.type" :propsData="getComps[index].props">
-        <button @click="deleteComp(index)">XXXXXXX</button>
+
+      <component class="comp" :is="comp.type" :propsData="getComps[index].props">
+        <button @click="deleteComp(index)">Delete</button>
+        <button @click="editComp(getComps[index].props)">Edit</button>
+
       </component>
       <add-component :index="index"></add-component>
     </div>
@@ -22,7 +25,7 @@
 </template>
 
 <script lang="js">
-  import { mapGetters } from 'vuex'
+  import { mapGetters } from 'vuex';
 
   // import authService from '../../services/auth.service';
   import footerComp from '../template-components/footer-comp';
@@ -53,7 +56,7 @@
     },
     data() {
       return {
-        // templates: { templates },
+        currEdit: '',
       }
     },
     methods: {
@@ -63,7 +66,11 @@
           type: 'deleteComp',
           index: index
         })
-      }
+      },
+      editComp(elements) {
+        this.currEdit = elements;
+        console.log('currEdit', this.currEdit);
+        }
     },
     components: {
       headerComp,
@@ -80,5 +87,9 @@
 <style scoped lang="scss">
   .editor {
 
+  }
+
+  .comp:hover {
+    border: 3px solid darkorange;
   }
 </style>

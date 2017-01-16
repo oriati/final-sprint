@@ -3,6 +3,7 @@
         <div class="container">
             <slot></slot>
             <div class="row 150%">
+                <slot></slot>
                 <div class="6u 12u$(medium)">
                     <ul class="major-icons">
                         <li><span class="icon style1 major" v-bind:class="icon1"></span></li>
