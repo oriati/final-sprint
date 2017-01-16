@@ -1,6 +1,7 @@
 <template>
     <section id="two" class="main style2">
         <div class="container">
+            <slot></slot>
             <div class="row 150%">
                 <slot></slot>
                 <div class="6u 12u$(medium)">

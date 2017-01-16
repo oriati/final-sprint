@@ -209,12 +209,28 @@ app.post('/login', function (req, res) {
 			} else {
 				cl('Login NOT Succesful');
 				req.session.user = null;
-				res.json(403, { error: 'Login failed' })
+				res.json(403, { error: 'Site Retrieval failed' })
 			}
 		});
 	});
 });
-
+app.post('/site', function (req, res) {
+	dbConnect().then((db) => {
+		// returns an array of sites from site collection based on owner
+		db.collection('site').find({owner: req.body.owner}).toArray((err, site) => {
+			if (err) {
+				cl('Site Retrieval NOT Succesful');
+				req.session.site = null;
+				res.json(403, { error: 'Site Retrieval failed' })
+			} else {
+				cl('Site Retrieval Succesful');
+				req.session.site = site;  //refresh the session value
+				res.json(site);
+			}
+		});
+	});
+});
+			
 app.get('/logout', function (req, res) {
 	req.session.reset();
 	res.end('Loggedout');

@@ -5,9 +5,11 @@
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
 
     <div v-for="(comp, index) in getComps">
+
       <component class="comp" :is="comp.type" :propsData="getComps[index].props">
         <button @click="deleteComp(index)">Delete</button>
         <button @click="editComp(getComps[index].props)">Edit</button>
+
       </component>
       <add-component :index="index"></add-component>
     </div>
