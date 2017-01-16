@@ -1,6 +1,7 @@
 <template>
     <section id="three" class="main special">
         <div class="container">
+            <slot></slot>
             <header class="major">
                 <h2>{{heading}}</h2>
             </header>

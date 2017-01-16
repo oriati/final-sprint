@@ -1,6 +1,7 @@
 <template>
     <section id="four" class="main style2 special">
         <div class="container">
+            <slot></slot>
             <header class="major">
                 <h2>{{cta}}</h2>
             </header>

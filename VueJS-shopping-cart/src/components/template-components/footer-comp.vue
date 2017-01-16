@@ -1,5 +1,6 @@
 <template>
    <section id="footer">
+       <slot></slot>
         <ul class="icons">
             <li><a href="#" class="icon alt" :class="icon1.class"><span class="label">Twitter</span></a></li>
             <li><a href="#" class="icon alt" :class="icon2.class"><span class="label">Facebook</span></a></li>

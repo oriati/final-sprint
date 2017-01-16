@@ -36,6 +36,7 @@ const actions = {
     addComponent({commit}, compType){
             console.log('action:', compType)      
             commit(ADD_COMPONENT, compType);
+
         }
   }
 
@@ -46,6 +47,7 @@ const mutations = {
   },
   [DELETE_COMP](state, {index} ) {
     console.log('deleting component ', index);
+    state.comps.splice(index, 1 );
   },
   [ADD_COMPONENT]( state, compType ){
         console.log('mutation:', compType);
