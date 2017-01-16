@@ -6,7 +6,7 @@
 
     <div v-for="(comp, index) in getComps">
       <component :is="comp.type" :propsData="getComps[index].props">
-        <button @click="deleteComp(index)">X</button>
+        <button @click="deleteComp(index)">XXXXXXX</button>
       </component>
       <add-component :index="index"></add-component>
     </div>
