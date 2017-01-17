@@ -174,14 +174,13 @@ app.post('/data/:objType', upload.single('file'), function (req, res) {
 
 });
 
-// PUT - updates
+// PUT - updates (deleting/adding a component)
 app.put('/data/:objType/:id',  function (req, res) {
 	const objType 	= req.params.objType;
 	const objId 	= req.params.id;
 	const newObj 	= req.body;
     if (newObj._id && typeof newObj._id === 'string') newObj._id = new mongodb.ObjectID(newObj._id);
-
-    cl(`Requested to UPDATE the ${objType} with id: ${objId}`);
+    // cl(`Requested to UPDATE the ${objType} with id: ${objId}`);
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.updateOne({ _id:  new mongodb.ObjectID(objId)}, newObj,

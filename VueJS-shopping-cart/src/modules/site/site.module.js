@@ -27,23 +27,19 @@ const actions = {
       })
   },
 
-  deleteComp({commit}, index) {
+  deleteComp({commit, state}, index) {
     commit(DELETE_COMP, { index })
-    console.log('commiting delete- comp ', { index });
+    console.log('commiting delete- comp ',index);
+    Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site)
   },
 
-    /* BASIC FLOW FOR DELETE BY ALON
-  deleteComp({commit}, index) {
-      // commit [DELETE_comp]
-    Vue.http.delete('http://localhost:3003/site', {siteid, index}).then((newComps){
-      commit(UPDATE_COMP, { index })
-    })
-*/
-
-  addComponent({commit}, addedComponent) {
-          console.log('component in actions:', addedComponent)
-  commit(ADD_COMPONENT, addedComponent);
+  addComponent({commit, state}, addedComponent) {
+      // console.log('component in actions:', state.site._id)
+      commit(ADD_COMPONENT, addedComponent);
+      Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site)
   },
+
+
   editComp({commit}, index, elements) {
           console.log('editComp in actions:', index, elements)
     commit(EDIT_COMP, index, elements);
