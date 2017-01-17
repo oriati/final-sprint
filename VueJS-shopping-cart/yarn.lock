@@ -232,18 +232,7 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-autoprefixer@^6.3.1, autoprefixer@^6.4.0:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.5.2.tgz#37cc910c5e1139ad341a006d5f6d441a380b742b"
-  dependencies:
-    browserslist "~1.4.0"
-    caniuse-db "^1.0.30000576"
-    normalize-range "^0.1.2"
-    num2fraction "^1.2.2"
-    postcss "^5.2.5"
-    postcss-value-parser "^3.2.3"
-
-autoprefixer@^6.6.0:
+autoprefixer@^6.3.1, autoprefixer@^6.6.0:
   version "6.6.1"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.6.1.tgz#11a4077abb4b313253ec2f6e1adb91ad84253519"
   dependencies:
@@ -252,6 +241,17 @@ autoprefixer@^6.6.0:
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^5.2.8"
+    postcss-value-parser "^3.2.3"
+
+autoprefixer@^6.4.0:
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.5.2.tgz#37cc910c5e1139ad341a006d5f6d441a380b742b"
+  dependencies:
+    browserslist "~1.4.0"
+    caniuse-db "^1.0.30000576"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^5.2.5"
     postcss-value-parser "^3.2.3"
 
 aws-sign2@~0.6.0:
@@ -3350,6 +3350,10 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
+medium-editor@^5.22.1:
+  version "5.22.1"
+  resolved "https://registry.yarnpkg.com/medium-editor/-/medium-editor-5.22.1.tgz#feecc430b67abe48a86d2eb404c8647d51a9b939"
+
 memory-fs@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.2.0.tgz#f2bb25368bc121e391c2520de92969caee0a0290"
@@ -4322,7 +4326,7 @@ postcss-zindex@^2.0.1:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss@^5.0.0, postcss@^5.0.19, postcss@^5.2.8:
+postcss@^5.0.0, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.16, postcss@^5.0.19, postcss@^5.0.2, postcss@^5.0.5, postcss@^5.0.8, postcss@^5.2.8:
   version "5.2.10"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-5.2.10.tgz#b58b64e04f66f838b7bc7cb41f7dac168568a945"
   dependencies:
@@ -4331,7 +4335,7 @@ postcss@^5.0.0, postcss@^5.0.19, postcss@^5.2.8:
     source-map "^0.5.6"
     supports-color "^3.1.2"
 
-postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.5:
+postcss@^5.0.10, postcss@^5.0.14, postcss@^5.0.4, postcss@^5.0.6, postcss@^5.2.5:
   version "5.2.5"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-5.2.5.tgz#ec428c27dffc7fac65961340a9b022fa4af5f056"
   dependencies:
@@ -5499,6 +5503,12 @@ vue-template-compiler@^2.0.4:
 vue-template-es2015-compiler@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.1.1.tgz#ae1ddcf9f6c7eb95df304560ba9a803f3ec9ffb4"
+
+vue2-medium-editor@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue2-medium-editor/-/vue2-medium-editor-1.0.2.tgz#2e51d563528ec8e863d322d5fecb1c9f92fde7d3"
+  dependencies:
+    medium-editor "^5.22.1"
 
 vue@^2.0.1:
   version "2.0.5"

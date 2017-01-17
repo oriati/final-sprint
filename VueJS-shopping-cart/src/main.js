@@ -12,7 +12,7 @@ const app = new Vue({
   router,
   store,
   components: {
-    MainNav
+    MainNav,
   }
 }).$mount('#app');
 
