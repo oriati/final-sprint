@@ -5,8 +5,7 @@ import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
 // import ElementUI from 'element-ui';
 // import BootstrapVue from 'bootstrap-vue';
-import Vuetify from 'vuetify'
- 
+import Vuetify from 'vuetify';
 
 
 Vue.use(Vuex);
@@ -15,4 +14,4 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 // Vue.use(ElementUI);
 // Vue.use(BootstrapVue);
-Vue.use(Vuetify)
+Vue.use(Vuetify);

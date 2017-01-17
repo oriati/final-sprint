@@ -22,6 +22,7 @@
     created() {
         // gets the users sites from server
 
+
         // this.$store.dispatch('getSites');
 
     },
