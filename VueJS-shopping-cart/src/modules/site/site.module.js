@@ -14,6 +14,7 @@ const state = {
   site: {},
 }
 
+
 const actions = {
   // need to figure out what to do with the store. seems like user in needed in both modules and this currUser variable is only a bandade
   getSites ({ commit }) {
@@ -25,10 +26,20 @@ const actions = {
         commit(GET_SITES, sites);
       })
   },
+
   deleteComp({commit}, index) {
     commit(DELETE_COMP, { index })
     console.log('commiting delete- comp ', { index });
   },
+
+    /* BASIC FLOW FOR DELETE BY ALON
+  deleteComp({commit}, index) {
+      // commit [DELETE_comp]
+    Vue.http.delete('http://localhost:3003/site', {siteid, index}).then((newComps){
+      commit(UPDATE_COMP, { index })
+    })
+*/
+
   addComponent({commit}, addedComponent) {
           console.log('component in actions:', addedComponent)
   commit(ADD_COMPONENT, addedComponent);
@@ -36,6 +47,7 @@ const actions = {
   editComp({commit}, index, elements) {
           console.log('editComp in actions:', index, elements)
     commit(EDIT_COMP, index, elements);
+
   },
   createSite({commit}, newSite) {
     let currUser = JSON.parse(localStorage.getItem('user'));
