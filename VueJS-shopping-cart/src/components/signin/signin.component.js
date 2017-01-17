@@ -24,7 +24,7 @@ export default {
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify(user));
           // needs to push router to where ever we let user pick between his sites
-          this.$router.push('main')
+          this.$router.push('dashboard')
         })
     }
   }
