@@ -198,6 +198,29 @@ app.put('/data/:objType/:id',  function (req, res) {
 });
 
 // Basic Login/Logout/Protected assets
+app.post('/signup', function (req, res) {
+		console.log('request : ', req);
+		
+		dbConnect().then((db) => {
+		db.collection('user').findOne({username: req.body.username, pass: req.body.pass}, function (err, user) {
+			if (user) {
+				cl('Login Succesful');
+                delete user.pass;
+				req.session.user = user;  //refresh the session value
+				res.json({token: 'Beareloginr: puk115th@b@5t', user, role : user.role});
+			} else {
+				cl('Login NOT Succesful');
+				req.session.user = null;
+				res.json(403, { error: 'Site Retrieval failed' })
+			}
+		});
+	});
+});
+	// dbConnect().then((db)=> {
+	// // 	db.collection('user').insert(req.body.user)
+	// })
+// })
+
 app.post('/login', function (req, res) {
 	dbConnect().then((db) => {
 		db.collection('user').findOne({username: req.body.username, pass: req.body.pass}, function (err, user) {

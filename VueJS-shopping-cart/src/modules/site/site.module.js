@@ -7,8 +7,10 @@ export const ADD_SITE = 'store/ADD_SITE';
 import Vue from 'vue';
 
 const state = {
+
   sites: [],
   site: {},
+
 }
 
 const actions = {

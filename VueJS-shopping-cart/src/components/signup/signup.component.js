@@ -11,10 +11,11 @@ export default  {
     signup( user ) {
       this.$validator.validateAll();
       if( this.errors.any() ) return;
-
       authService.signup(user).then(res => {
-        this.$store.commit(SIGN_IN);
-        this.$router.push({ name: 'shop' });
+        console.log('done');
+        // this.$store.commit(SIGN_IN);
+        this.$store.dispatch('signup', user);
+        this.$router.push({ name: 'main' });
       });
     }
   }
