@@ -29,8 +29,18 @@ const actions = {
         console.log('store', state.user, res);
         return (res);
       })
+  },
+  signup({commit}, user) {
+    return Vue.http.post('http://localhost:3003/data/user', user )    
+      .then(res => res.json())
+      .then(res => {
+        commit(SIGN_IN, res.user);
+        console.log('store', state.user, res);
+        return (res);
+      // })
+      })
   }
-};
+}
 const getters = {
   isLoggedIn: state => state.isLoggedIn,
   user: state => state.user

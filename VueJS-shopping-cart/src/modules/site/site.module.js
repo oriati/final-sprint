@@ -5,7 +5,6 @@ export const GET_SITE = 'store/GET_SITE';
 import Vue from 'vue';
 
 const state = {
-
   site: {
    _id: null,
    name: '',

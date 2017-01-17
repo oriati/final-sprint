@@ -1,5 +1,5 @@
 <template lang="html">
-
+  
   <section class="main container below-nav">
     <!--<h1>main Component</h1>-->
     <toolbar></toolbar>
@@ -21,7 +21,7 @@
     // },    
     created() {
         // gets the users sites from server
-        // this.$store.dispatch('getSite');
+        this.$store.dispatch('getSite');
     },
     mounted() {
 
