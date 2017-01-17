@@ -4,6 +4,7 @@ export const EDIT_COMP = 'store/EDIT_COMP';
 export const GET_SITES = 'store/GET_SITE';
 export const SELECT_SITE = 'store/SELECT_SITE';
 export const ADD_SITE = 'store/ADD_SITE';
+export const DELETE_SITE = 'store/DELETE_SITE';
 
 import Vue from 'vue';
 import templates from '../../interface/comp.templates';
@@ -17,9 +18,9 @@ const state = {
 
 const actions = {
   // need to figure out what to do with the store. seems like user in needed in both modules and this currUser variable is only a bandade
-  getSites ({ commit }) {
+  getSites({ commit }) {
     let currUser = JSON.parse(localStorage.getItem('user'));
-    Vue.http.post('http://localhost:3003/site', {owner: currUser.username})
+    Vue.http.post('http://localhost:3003/site', { owner: currUser.username })
       .then(res => res.json())
       .then(sites => {
         // console.log('site module', sites);
@@ -31,7 +32,6 @@ const actions = {
     commit(DELETE_COMP, { index })
     console.log('commiting delete- comp ', { index });
   },
-
     /* BASIC FLOW FOR DELETE BY ALON
   deleteComp({commit}, index) {
       // commit [DELETE_comp]
@@ -51,20 +51,25 @@ const actions = {
   },
   createSite({commit}, newSite) {
     let currUser = JSON.parse(localStorage.getItem('user'));
-    Vue.http.post('http://localhost:3003/data/site', {name: newSite.name, url: newSite.url, owner: currUser.username,isPublished: false, comps: []})
+    Vue.http.post('http://localhost:3003/data/site', { name: newSite.name, url: newSite.url, owner: currUser.username, isPublished: false, comps: [] })
       .then(res => res.json())
       .then(site => {
         commit(ADD_SITE, site)
       })
-      }
+  },
+  deleteSite({commit}, index) {
+    console.log('site to delete: ', state.sites[index]._id);
+    Vue.http.delete(`http://localhost:3003/data/site/${state.sites[index]._id}`)
+      .then(() => commit(DELETE_SITE,index))
+
+  }
 }
 
-
 const mutations = {
-  [GET_SITES](state, sites) {
-    // when we switch to multiple sites per user we need to adress this [0]
-    state.sites = sites;
-  },
+    [GET_SITES](state, sites) {
+      state.sites = sites;
+      console.log('new sites: ', state.sites);
+    },
   [DELETE_COMP](state, {index}) {
     console.log('deleting component ', index);
     state.site.comps.splice(index, 1 );
@@ -93,13 +98,17 @@ const mutations = {
     console.log('selected site', state.site);
   },
 
-  [ADD_SITE](state, site) {
-    state.sites.push(site);
-    console.log('sites after push', state.sites);
-  }
+    [ADD_SITE](state, site) {
+      state.sites.push(site);
+      console.log('sites after push', state.sites);
+    },
+    [DELETE_SITE](state, index) {
+      state.sites.splice(index,1)
+    }
 
-}
+  }
 const getters = {
+
         // heading: state => state.comps.props.heading
         getComps: state => state.site.comps,
         getCompEdit: state => state.currEdit,
@@ -107,8 +116,8 @@ const getters = {
     }
 
 export default {
-  state,
-  getters,
-  actions,
-  mutations
-}
+    state,
+    getters,
+    actions,
+    mutations
+  }
