@@ -15,46 +15,26 @@ function signin( {email,password} ) {
       return user;
     })
 }
-// function signinDummy( { email, password } ) {
-//   return new Promise(( resolve, reject ) => {
-//     if( password === '123456' ) {
-//       const token = 'JWT';
-//       resolve({
-//         token
-//       });
-//       setSession(token);
-//     } else {
-//       reject({
-//         error: 'Email/Password not valid'
-//       });
-//     }
-//   });
-// }
-
-
 /**
  *
  * @param email
  * @param password
  */
-function signup( { email, password } ) {
+
+function signup(user) {
   const token = 'JWT';
   return new Promise(resolve => {
     resolve({
       token
     });
-    setSession(token);
+    setSession(user, token);
   });
 }
 
-/**
- *
- * @param token
- */
-function setSession( token, user, role ) {
+function setSession(user, token) {
   localStorage.setItem('token', token);
   localStorage.setItem('user', JSON.stringify(user));
-  localStorage.setItem('role', role);
+  // localStorage.setItem('role', user.role);
 }
 
 /**
@@ -94,3 +74,19 @@ export default {
   isLoggedIn,
   protectRoute,
 }
+// function signinDummy( { email, password } ) {
+//   return new Promise(( resolve, reject ) => {
+//     if( password === '123456' ) {
+//       const token = 'JWT';
+//       resolve({
+//         token
+//       });
+//       setSession(token);
+//     } else {
+//       reject({
+//         error: 'Email/Password not valid'
+//       });
+//     }
+//   });
+// }
+

@@ -1,10 +1,10 @@
 <template lang="html">
   <section class="below-nav">
-    <!--<h1>toolbar Component</h1>-->
-    <v-sidebar right fixed class="sidebar">
-      <!--<v-navbar class="black">
+    <h1>toolbar Component</h1>
+    <!--<v-sidebar right fixed class="sidebar">
+      <v-navbar class="black">
         <p>Editor</p>
-        </v-navbar>-->
+        </v-navbar>
 
       <div class="content">
       <p>Toolbar</p>
@@ -13,7 +13,7 @@
     </ul>
         {{getCompEdit}}
       </div>
-    </v-sidebar>
+    </v-sidebar>-->
 </v-app>
 
   </section>

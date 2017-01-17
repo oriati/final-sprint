@@ -83,7 +83,7 @@ export default  {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
     
     .backgroundred {
         background-color: orangered;

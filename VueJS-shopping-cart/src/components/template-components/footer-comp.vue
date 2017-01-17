@@ -35,7 +35,7 @@ methods : {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
     .elem:hover {
     box-shadow:inset 0px 0px 0px 2px orange;
   }
