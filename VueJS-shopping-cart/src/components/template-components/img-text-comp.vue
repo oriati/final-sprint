@@ -5,12 +5,16 @@
             <div class="row 150%">
                 <div class="6u 12u$(medium)">
                     <header class="major">
-                        <h2>{{heading}}</h2>
+                        <div class="elem">
+                            <medium-editor :text='propsData.heading' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>
+                        </div>
                     </header>
-                    <p>{{subHeading}}</p>
+                        <div class="elem">
+                            <medium-editor :text='propsData.subHeading' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
+                        </div>
                 </div>
                 <div class="6u$ 12u$(medium) important(medium)">
-                    <span class="image fit"><img :src="imgSrc" alt="" /></span>
+                    <span class="image fit"><img :src="propsData.imgSrc" alt="" /></span>
                 </div>
             </div>
         </div>
@@ -20,18 +24,26 @@
 <script>
 export default  {
     name: 'img-text-comp',
-    props: [],
+    props: ['propsData'],
     data() {
       return {
-          heading: 'This is a heading',
-          subHeading: 'This is a sub-heading. Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.',
-          imgSrc: 'http://placehold.it/450x280'
       }
-    }
+    },
+    methods : {
+      applyTextEdit: function (text) {
+                  this.text = text
+              }
+  },
+  components : {
+     'medium-editor': VueMediumEditor
+  }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
+    .elem:hover {
+        box-shadow:inset 0px 0px 0px 2px orange;
+    }
 
 </style>
 

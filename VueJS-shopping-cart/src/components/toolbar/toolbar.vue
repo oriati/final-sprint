@@ -7,7 +7,11 @@
         </v-navbar>
 
       <div class="content">
-      <p>Editor</p>
+      <p>Toolbar</p>
+      <ul v-for="element in getCompEdit">
+        <li>{{element}}</li>
+    </ul>
+        {{getCompEdit}}
       </div>
     </v-sidebar>-->
 </v-app>
@@ -16,6 +20,7 @@
 </template>
 
 <script lang="js">
+  import { mapGetters } from 'vuex';
   // import authService from '../../services/auth.service';
 
   export default  {
@@ -29,14 +34,19 @@
     },
     data() {
       return {
-
+        isActive: false
       }
     },
     methods: {
 
     },
     computed: {
-
+      // heading () {
+      //   return this.$store.getters.heading;
+      // }
+      ...mapGetters([
+        'getCompEdit',
+      ])
     }
 }
 </script>
@@ -44,7 +54,7 @@
 <style scoped lang="scss">
   .sidebar {
     margin-top: 100px;
-    opacity: 0.9;
+    display: none;
   }
 
   .content {

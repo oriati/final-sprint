@@ -9,6 +9,7 @@
                 </option>
             </select>
             {{selected}}
+            {{index}}
             <button type="" @click="addComponent(selected)">Add!</button>
         </div>
     </section>
@@ -36,13 +37,14 @@
         },
         methods: {
             addComponent() {
-            this.$store.dispatch('addComponent', this.selected)
-            console.log('this.selected', this.selected);
-            
-        }
-    },
-    computed: {
+            let addedComponent = {
+                index: this.index,
+                newComp: templates.compsTemplatesInterfaces[this.selected], 
+                compType: this.selected,
+            }
+            this.$store.dispatch('addComponent', addedComponent)
 
+        }
     }
     }
 </script>
