@@ -1,21 +1,14 @@
 <template lang="html">
-  <div class="editor container below-nav">
+  <div class="editor container">
     <!--<h1>editor Component</h1>-->
-
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
-
     <div v-for="(comp, index) in getComps">
-
       <component class="comp" :is="comp.type" :propsData="getComps[index].props">
         <button @click="deleteComp(index)">Delete</button>
-        <button @click="editComp(getComps[index].props)">Edit</button>
-
+        <button @click="editComp(index, getComps[index].props)">Edit</button>
       </component>
       <add-component :index="index"></add-component>
     </div>
-
-   
-
     <!--<gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
@@ -56,7 +49,6 @@
     },
     data() {
       return {
-        currEdit: '',
       }
     },
     methods: {
@@ -67,9 +59,13 @@
           index: index
         })
       },
-      editComp(elements) {
-        this.currEdit = elements;
-        console.log('currEdit', this.currEdit);
+      editComp(index, elements) {
+        console.log('elements', elements);
+        this.$store.dispatch({
+          type: 'editComp',
+          index: index,
+          elements: elements,
+        })
         }
     },
     components: {
@@ -90,6 +86,6 @@
   }
 
   .comp:hover {
-    border: 3px solid darkorange;
+    box-shadow:inset 0px 0px 0px 5px orange;
   }
 </style>

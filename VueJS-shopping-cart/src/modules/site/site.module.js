@@ -1,8 +1,10 @@
 export const DELETE_COMP = 'store/DELETE_COMP';
 export const ADD_COMPONENT = 'store/ADD_COMPONENT';
+export const EDIT_COMP = 'store/EDIT_COMP';
 export const GET_SITE = 'store/GET_SITE';
 
 import Vue from 'vue';
+import templates from '../../interface/comp.templates';
 
 const state = {
 
@@ -17,10 +19,11 @@ const state = {
      props: {
            heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
            subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
-          buttonText: 'Make this button whatever you want!'
+           buttonText: 'Make this button whatever you want!'
          }
    }]
-  }
+  },
+  currEdit: {}
 }
 
 const actions = {
@@ -38,10 +41,13 @@ const actions = {
     commit(DELETE_COMP, { index })
     console.log('commiting delete- comp ', { index });
   },
-  addComponent({commit}, compType) {
-          console.log('action:', compType)
-    commit(ADD_COMPONENT, compType);
-
+  addComponent({commit}, addedComponent) {
+          console.log('component in actions:', addedComponent)
+  commit(ADD_COMPONENT, addedComponent);
+  },
+  editComp({commit}, index, elements) {
+          console.log('editComp in actions:', index, elements)
+    commit(EDIT_COMP, index, elements);
   }
 }
 
@@ -54,25 +60,27 @@ const mutations = {
     console.log('deleting component ', index);
     state.site.comps.splice(index, 1 );
   },
+  [EDIT_COMP](state, {index, elements}) {
+    console.log('component to edit:', index, elements);
+    state.currEdit = elements;
+    console.log('state.currEdit', state.currEdit);
+  },
 
-  [ADD_COMPONENT]( state, compType ){
-        console.log('mutation:', compType);
-            state.site.comps.push({
-                _id: '',
+  [ADD_COMPONENT]( state, addedComponent ){
+        // console.log('mutation:', newComp);
+        console.log('addedComponent:', addedComponent);
+        // console.log('compsTemplatesInterfaces[newComp]', templates.compsTemplatesInterfaces[newComp]);
+            state.site.comps.splice(addedComponent.index+1,0,{
                 name: '',
-                type: compType,
-                props: {
-                      heading: 'Hi, I\'m Photon, another fine little freebie from Accumsan',
-                      subHeading: 'feugiat mi commodo erat lorem ipsum, sed magna lobortis feugiat sapien sed etiam volutpat accumsan.',
-                      buttonText: 'Make this button whatever you want!'
-                    }
+                type: addedComponent.compType, 
+                props: addedComponent.newComp
             })
         }
-
 }
 const getters = {
         // heading: state => state.comps.props.heading
-        getComps: state => state.site.comps
+        getComps: state => state.site.comps,
+        getCompEdit: state => state.currEdit
     }
 
 export default {
