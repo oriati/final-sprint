@@ -4,6 +4,7 @@
 
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
 
+    <add-component :index=0></add-component>
     <div v-for="(comp, index) in getComps">
 
       <component class="comp" :is="comp.type" :propsData="getComps[index].props">
@@ -59,31 +60,33 @@
         currEdit: '',
       }
     },
+
     methods: {
       deleteComp(index) {
-        // swal({
-        //   title: "Are you sure?",
-        //   text: "You will not be able to recover this imaginary file!",
-        //   type: "warning",
-        //   showCancelButton: true,
-        //   confirmButtonColor: "#DD6B55",
-        //   confirmButtonText: "Yes, delete it!",
-        //   cancelButtonText: "No, cancel plx!",
-        //   closeOnConfirm: false,
-        //   closeOnCancel: false
-        // },
-        // function(isConfirm){
-        //   if (isConfirm) {
-        //     swal("Deleted!", "Your imaginary file has been deleted.", "success");
-        //   } else {
-        //     swal("Cancelled", "Your imaginary file is safe :)", "error");
-        //   }
-        // });
-        // this.$store.dispatch('deleteComp', index)     
-        this.$store.dispatch({
-          type: 'deleteComp',
-          index: index
-        })
+        var that = this;
+        swal({
+          title: "Are you sure?",
+          text: "You will not be able to recover this imaginary file!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          cancelButtonText: "No, cancel please!",
+          closeOnConfirm: false,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm) {
+            swal("Deleted!", "Your component has been deleted.", "success");
+            that.$store.dispatch('deleteComp', index)     
+            // that.$store.dispatch({
+            //   type: 'deleteComp',
+            //   index: index
+            // })
+          } else {
+            swal("Cancelled", "Your component is safe :)", "error");
+          }
+        });   
       },
       editComp(elements) {
         this.currEdit = elements;
