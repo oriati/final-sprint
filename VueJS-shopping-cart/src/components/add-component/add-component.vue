@@ -1,15 +1,12 @@
 <template lang="html">
     <section class="add-component">
-        <h4>Add Component</h4>
         <div class="form-group">
-            <label for="sel1">Component to add:</label>
+            <label for="sel1">Add Component</label>
             <select class="form-control" v-model="selected">
                 <option v-for="temp in templates.compsTemplatesInterfaces" name="">
                     {{temp.name}}
                 </option>
             </select>
-            {{selected}}
-            {{index}}
             <button type="" @click="addComponent(selected)">Add!</button>
         </div>
     </section>

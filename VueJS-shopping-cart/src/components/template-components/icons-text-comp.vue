@@ -15,17 +15,17 @@
                 </div>
                 <div class="6u$ 12u$(medium)">
                     <header class="major">
-                        <div class="elem">
+                        <div class="elem" data-medium="heading">
                             <medium-editor :text='propsData.heading' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
                     </header>
-                        <div class="elem">
+                        <div class="elem" data-medium="text1">
                             <medium-editor :text='propsData.text1' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
-                        <div class="elem">
+                        <div class="elem" data-medium="text2">
                             <medium-editor :text='propsData.text2' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
-                        <div class="elem">
+                        <div class="elem" data-medium="text3">
                             <medium-editor :text='propsData.text3' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
                 </div>
@@ -37,24 +37,22 @@
 <script>
 export default  {
     name: 'icons-text-comp',
-    props: ['propsData'],
+    props: ['propsData', 'index'],
     data() {
       return {
-        //   icon1:'fa-code',
-        //   icon2:'fa-bolt',
-        //   icon3:'fa-camera-retro',
-        //   icon4:'fa-bath',
-        //   icon5:'fa-space-shuttle',
-        //   icon6:'fa-ravelry',
-        //   heading: 'This is the gallery heading',
-        //   text1: 'Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.',
-        //   text2: 'Blandit faucibus proin. Ac aliquam integer adipiscing enim non praesent vis commodo nunc phasellus cubilia ac risus accumsan. Accumsan blandit. Lobortis phasellus non lobortis dit varius mi varius accumsan lobortis. Blandit ante aliquam lacinia lorem lobortis semper morbi col faucibus vitae integer placerat accumsan orci eu mi odio tempus adipiscing adipiscing adipiscing curae consequat feugiat etiam dolore',
-        //   text3: 'Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.',
-      }
+        }
     },
     methods : {
       applyTextEdit: function (text) {
                   this.text = text
+                  let mediumElem = document.querySelector("[data-medium-focused]");
+                  let element = mediumElem.parentNode.getAttribute("data-medium");   
+                  let editedText = {
+                      text: this.text,
+                      compIndex: this.index,
+                      element: element, 
+                  };
+                  this.$store.dispatch('editText', editedText)
               }
   },
   components : {
@@ -64,5 +62,7 @@ export default  {
 </script>
 
 <style scoped lang="scss">
-
+    .elem:hover {
+        box-shadow:inset 0px 0px 0px 2px orange;
+    }
 </style>
