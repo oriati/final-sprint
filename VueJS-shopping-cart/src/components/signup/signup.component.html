@@ -8,12 +8,12 @@
           <img class="profile-img" src="https://www.gravatar.com/avatar?d=monsterid" alt="">
           <form class="form-signin" novalidate @submit.prevent="signup(user)">
 
-            <div class="form-group" :class="{'has-error': errors.has('user.email') }">
-              <input type="email" class="form-control" placeholder="Email" autofocus v-model="user.email" v-validate.initial="user.email"
-                data-vv-rules="required|email">
-              <span class="text-danger" v-if="errors.has('user.email')">Email please</span>
-            </div>
-
+          <div class="form-group" :class="{'has-error': errors.has('user.email') }">
+            <input type="email" class="form-control" placeholder="Email" autofocus v-model="user.username"
+                   v-validate.initial="user.email" data-vv-rules="required|email">
+            <span class="text-danger"
+                  v-if="errors.has('user.email')">Email please</span>
+          </div>
 
             <div class="form-group" :class="{'has-error': errors.has('user.password') }">
               <input class="form-control" placeholder="Password" type="password" v-model="user.password" v-validate.initial="user.password"

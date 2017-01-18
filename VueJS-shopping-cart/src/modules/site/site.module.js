@@ -4,6 +4,7 @@ export const EDIT_COMP = 'store/EDIT_COMP';
 export const GET_SITES = 'store/GET_SITES';
 export const SELECT_SITE = 'store/SELECT_SITE';
 export const ADD_SITE = 'store/ADD_SITE';
+export const EDIT_TEXT = 'store/EDIT_TEXT';
 export const DELETE_SITE = 'store/DELETE_SITE';
 export const CHANGE_MODE = 'store/CHANGE_MODE';
 export const GET_SITE = 'store/GET_SITE';
@@ -62,6 +63,13 @@ const actions = {
       })
   },
 
+
+  editText({commit, state}, editedText) {
+          console.log('editedText in actions:', editedText)
+    commit(EDIT_TEXT, editedText);
+    Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site)
+  },
+
   createSite({commit}, newSite) {
     let currUser = JSON.parse(localStorage.getItem('user'));
     Vue.http.post('http://localhost:3003/data/site', { name: newSite.name, url: newSite.url, owner: currUser.username, isPublished: false, comps: [] })
@@ -109,6 +117,10 @@ const mutations = {
     state.site = site;
   },
 
+   [EDIT_TEXT]( state, editedText ){
+        state.site.comps[editedText.compIndex].props[editedText.element] = editedText.text;
+        },
+
   [SELECT_SITE](state, index) {
     state.site = state.sites[index];
     // not sure if this part is needed but it stores the index of the site in the the sites array in the site object
@@ -145,3 +157,5 @@ export default {
   actions,
   mutations
 }
+
+

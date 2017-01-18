@@ -16,24 +16,18 @@ export default {
                         name: 'gallery-comp',                        
                         heading: 'This is the gallery heading',
                         subHeading: 'This is the gallery sub-heading',
-                        gallery1: {
-                                    imgSrc: 'http://placehold.it/320x210',
-                                    heading: 'Gallery 1',
-                                    subHeading: 'Sub-heading for gallery 1 - Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet',
-                                    buttonText: 'Enter Gallery 1'
-            },
-                        gallery2: {
-                                    imgSrc: 'http://placehold.it/320x210',
-                                    heading: 'Gallery 2',
-                                    subHeading: 'Sub-heading for gallery 2 -  - Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet',
-                                    buttonText: 'Enter Gallery 2'
-            },
-                        gallery3: {
-                                    imgSrc: 'http://placehold.it/320x210',
-                                    heading: 'Gallery 3',
-                                    subHeading: 'Sub-heading for gallery 3 - - Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet',
-                                    buttonText: 'Enter Gallery 3'
-            }
+                        gallery1imgSrc: 'http://placehold.it/320x210',
+                        gallery1heading: 'Gallery 1',
+                        gallery1subHeading: 'Sub-heading for gallery 1 - Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet',
+                        gallery1buttonText: 'Enter Gallery 1',
+                        gallery2imgSrc: 'http://placehold.it/320x210',
+                        gallery2heading: 'Gallery 2',
+                        gallery2subHeading: 'Sub-heading for gallery 2 -  - Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet',
+                        gallery2buttonText: 'Enter Gallery 2',
+                        gallery3imgSrc: 'http://placehold.it/320x210',
+                        gallery3heading: 'Gallery 3',
+                        gallery3subHeading: 'Sub-heading for gallery 3 - - Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet',
+                        gallery3buttonText: 'Enter Gallery 3',
         },
         'icons-text-comp': {
                         name: 'icons-text-comp',                        

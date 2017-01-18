@@ -10,7 +10,7 @@ export default {
   },
   data: () => {
     return {
-      user: { email: 'ogen@derp.com', password: '123456' },
+      user: { username: 'ogen@derp.com', password: '123456' },
       error: ""
     }
   },

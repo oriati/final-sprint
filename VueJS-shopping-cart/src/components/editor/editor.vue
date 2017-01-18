@@ -5,9 +5,9 @@
     <add-component :index=0></add-component>
 
     <div v-for="(comp, index) in getComps">
-      <component class="comp" :is="comp.type" :propsData="getComps[index].props">
-        <button v-if="getEditMode" @click="deleteComp(index)">Delete</button>
-        <button v-if="getEditMode" @click="editComp(index, getComps[index].props)">Edit</button>
+      <component class="comp" :is="comp.type" :propsData="getComps[index].props" :index="index">
+        <button @click="deleteComp(index)">Delete</button>
+        <button @click="editComp(index, getComps[index].props)">Edit</button>
       </component>
       <add-component :index="index"></add-component>
     </div>

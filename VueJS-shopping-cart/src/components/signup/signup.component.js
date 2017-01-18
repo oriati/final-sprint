@@ -6,7 +6,7 @@ import mainNav from '../main-nav';
 export default  {
   data   : () => {
     return {
-      user : { email: '', password: '' },
+      user : { username: '', password: '' },
       error: ""
     }
   },
@@ -18,7 +18,7 @@ export default  {
         console.log('done');
         // this.$store.commit(SIGN_IN);
         this.$store.dispatch('signup', user);
-        this.$router.push({ name: 'main' });
+        this.$router.push({ name: 'dashboard' });
       });
     }
   },

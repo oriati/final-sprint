@@ -6,6 +6,7 @@ import VeeValidate from 'vee-validate';
 // import ElementUI from 'element-ui';
 // import BootstrapVue from 'bootstrap-vue';
 import Vuetify from 'vuetify';
+import medium from 'medium-editor';
 
 
 Vue.use(Vuex);
