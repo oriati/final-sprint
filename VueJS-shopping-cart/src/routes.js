@@ -6,6 +6,8 @@ import Signup from './components/signup';
 import Admin from './components/admin/admin';
 import Main from './components/main/main';
 import Dashboard from './components/dashboard/dashboard';
+import Published from './components/published/published';
+
 
 const routes = [{
   path     : '/',
@@ -27,7 +29,7 @@ const routes = [{
     component: Admin
   },
   {
-    path     : '/main',
+    path     : '/main/:id',
     name     : 'main',
     component: Main
   },
@@ -35,6 +37,11 @@ const routes = [{
     path     : '/dashboard',
     name     : 'dashboard',
     component: Dashboard
+  },
+  {
+    path     : '/published/:id',
+    name     : 'published',
+    component: Published
   },
   { path: '*', redirect: { name: 'home' } }];
 

@@ -1,6 +1,7 @@
 <template lang="html">
 
   <section class="dashboard">
+    <main-nav></main-nav>
     <h1>dashboard Component</h1>
     <div class="sites">
 
@@ -15,8 +16,8 @@
           </v-card-title>
         </v-card-row>
         <v-card-row actions>
-          <v-btn flat block @click.native="selectSite(index)" class="blue--text darken-1">edit</v-btn>
-          <v-btn flat block class="blue--text darken-1">view</v-btn>
+          <v-btn flat block @click.native="selectSite(index, 'edit')" class="blue--text darken-1">edit</v-btn>
+          <v-btn flat block @click.native="selectSite(index, 'view')" class="blue--text darken-1">view</v-btn>
         </v-card-row>
       </v-card>
     </div>
@@ -52,12 +53,13 @@
   import { mapGetters } from 'vuex';
   import { SELECT_SITE } from '../../modules/site/site.module';
 
+  import mainNav from '../main-nav';
+
   export default {
     name: 'dashboard',
     props: [],
     created() {
       this.reloadSites();
-      // this.newSite.owner = this.$store.state.user.username
     },
     mounted() {
 
@@ -75,10 +77,15 @@
       reloadSites() {
         this.$store.dispatch('getSites')
       },
-      selectSite(index) {
-        console.log('clicked');
+      selectSite(index, choice) {
+        // console.log(isEdit);
         this.$store.commit(SELECT_SITE, index)
-        this.$router.push('main')
+        console.log('choice', choice);
+        if(choice === 'edit') {
+          this.$router.push({path: `main/${this.siteId}`});
+        }
+        else {this.$router.push({path: `published/${this.siteId}`});
+        }
       },
       resetCreate() {
         this.createClicked = false;
@@ -119,8 +126,12 @@
     },
     computed: {
       ...mapGetters([
-      'getSites'
+      'getSites',
+      'siteId'
     ])
+    },
+    components: {
+      mainNav
     }
   }
 </script>

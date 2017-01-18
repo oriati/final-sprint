@@ -2,7 +2,6 @@
   <div class="editor container">
     <!--<h1>editor Component</h1>-->
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
-
     <add-component :index=0></add-component>
 
     <div v-for="(comp, index) in getComps">
@@ -45,6 +44,8 @@
       // }
       ...mapGetters([
         'getComps',
+        'getEditMode',
+        
       ])
     },
     mounted() {
