@@ -54,8 +54,7 @@
 
       changeHeaders(event){
         this.$store.dispatch('changeHeaders', event)      
-      }
-
+      },
 
       viewPublished() {
         this.$store.commit(CHANGE_MODE, false)
