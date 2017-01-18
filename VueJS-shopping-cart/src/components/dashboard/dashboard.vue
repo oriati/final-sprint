@@ -91,9 +91,31 @@
       },
 
       deleteSite(index) {
-        this.$store.dispatch('deleteSite', index)
+        var that = this;
+        swal({
+          title: "Are you sure?",
+          text: "You will not be able to recover this imaginary file!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          cancelButtonText: "No, cancel please!",
+          closeOnConfirm: false,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm) {
+            swal("Deleted!", "Your site has been deleted.", "success");
+            that.$store.dispatch('deleteSite', index)     
+            // that.$store.dispatch({
+            //   type: 'deleteComp',
+            //   index: index
+            // })
+          } else {
+            swal("Cancelled", "Phew! That was close! Your site is safe :)", "error");
+          }
+        });   
       }
-
     },
     computed: {
       ...mapGetters([
