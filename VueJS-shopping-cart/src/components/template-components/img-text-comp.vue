@@ -5,11 +5,11 @@
             <div class="row 150%">
                 <div class="6u 12u$(medium)">
                     <header class="major">
-                        <div class="elem">
+                        <div class="elem" data-medium="heading">
                             <medium-editor :text='propsData.heading' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
                     </header>
-                        <div class="elem">
+                        <div class="elem" data-medium="subHeading">
                             <medium-editor :text='propsData.subHeading' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
                 </div>
@@ -24,7 +24,7 @@
 <script>
 export default  {
     name: 'img-text-comp',
-    props: ['propsData'],
+    props: ['propsData', 'index'],
     data() {
       return {
       }
@@ -32,6 +32,14 @@ export default  {
     methods : {
       applyTextEdit: function (text) {
                   this.text = text
+                  let mediumElem = document.querySelector("[data-medium-focused]");
+                  let element = mediumElem.parentNode.getAttribute("data-medium");   
+                  let editedText = {
+                      text: this.text,
+                      compIndex: this.index,
+                      element: element, 
+                  };
+                  this.$store.dispatch('editText', editedText)
               }
   },
   components : {
