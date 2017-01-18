@@ -2,7 +2,7 @@
     <section id="four" class="main style2 special">
         <div class="container">
             <slot></slot>
-            <header class="major">
+            <header class="major"> 
                 <div class="elem" data-medium="cta">
                     <medium-editor :text='propsData.cta' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>
                 </div>

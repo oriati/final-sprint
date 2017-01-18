@@ -1,6 +1,5 @@
 <template lang="html">
-  <section class="below-nav">
-    <h1>toolbar Component</h1>
+  <section class="">
     <div>
       <!--<v-btn success @click.native="changeMode(true)">Edit</v-btn>-->
       <v-btn info @click.native="viewPublished">View</v-btn>

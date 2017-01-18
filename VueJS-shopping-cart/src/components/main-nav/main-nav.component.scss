@@ -1,16 +1,24 @@
 .navbar-brand {
   font-size: 30px;
+  border: 0;
+  
 }
 
 .navbar__items a {
   text-decoration: none;
-  color: #000;
+  color: #fff;
   padding-right: 40px;
   text-transform: uppercase;
   font-weight: 400;
   outline: 0;
+  border: 0;
    
 }
+
+.bgc {
+  background-color: #1695A3;
+}
+
 // .router-link-active {
 //   color: lightgreen !important;
 // }

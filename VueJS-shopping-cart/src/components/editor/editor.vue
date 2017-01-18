@@ -3,11 +3,11 @@
     <!--<h1>editor Component</h1>-->
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
     <add-component :index=0></add-component>
-
+    
     <div v-for="(comp, index) in getComps">
       <component class="comp" :is="comp.type" :propsData="getComps[index].props" :index="index">
         <button @click="deleteComp(index)">Delete</button>
-        <button @click="editComp(index, getComps[index].props)">Edit</button>
+        <!--<button @click="editComp(index, getComps[index].props)">Edit</button>-->
       </component>
       <add-component :index="index"></add-component>
     </div>
@@ -53,6 +53,7 @@
     },
     data() {
       return {
+        // string: "signup-comp",
       }
     },
 

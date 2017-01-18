@@ -1,4 +1,5 @@
 <template lang="html">
+
   <section>
     <main-nav></main-nav>
 
@@ -53,7 +54,6 @@
 </script>
 
 <style scoped lang="scss">
-  .main {
 
-  }
 </style>
+
