@@ -146,21 +146,18 @@ app.delete('/data/:objType/:id', function (req, res) {
 app.post('/data/:objType', upload.single('file'), function (req, res) {
 	//console.log('req.file', req.file);
 	// console.log('req.body', req.body);
-
 	const objType = req.params.objType;
 	cl("POST for " + objType);
-
 	const obj = req.body;
 	delete obj._id;
 	// If there is a file upload, add the url to the obj
 	if (req.file) {
 		obj.imgUrl = serverRoot + req.file.filename;
 	}
-
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
-
 		collection.insert(obj, (err, result) => {
+			if (obj.password) delete obj.password;				// deleting objects password if theres any
 			if (err) {
 				cl(`Couldnt insert a new ${objType}`, err)
 				res.json(500, {error: 'Failed to add'})
@@ -201,10 +198,10 @@ app.post('/signup', function (req, res) {
 		console.log('request : ', req);
 		
 		dbConnect().then((db) => {
-		db.collection('user').findOne({username: req.body.username, pass: req.body.pass}, function (err, user) {
+		db.collection('user').findOne({username: req.body.username, password: req.body.password}, function (err, user) {
 			if (user) {
 				cl('Login Succesful');
-                delete user.pass;
+                delete user.password;
 				req.session.user = user;  //refresh the session value
 				res.json({token: 'Beareloginr: puk115th@b@5t', user, role : user.role});
 			} else {
@@ -222,10 +219,10 @@ app.post('/signup', function (req, res) {
 
 app.post('/login', function (req, res) {
 	dbConnect().then((db) => {
-		db.collection('user').findOne({username: req.body.username, pass: req.body.pass}, function (err, user) {
+		db.collection('user').findOne({username: req.body.username, password: req.body.password}, function (err, user) {
 			if (user) {
 				cl('Login Succesful');
-                delete user.pass;
+                delete user.password;
 				req.session.user = user;  //refresh the session value
 				res.json({token: 'Beareloginr: puk115th@b@5t', user, role : user.role});
 			} else {

@@ -6,8 +6,8 @@ import Vue from 'vue';
  * @param password
  * @returns {Promise}
  */
-function signin( {email,password} ) {
-  return Vue.http.post('http://localhost:3003/login', {username: email, pass: password} )
+function signin( {username,password} ) {
+  return Vue.http.post('http://localhost:3003/login', {username: username, pass: password} )
     .then(res => res.json())
     .then(({token, user, role}) => {
       console.log('Signedin user:', user, role);
@@ -43,7 +43,7 @@ function setSession(user, token) {
 function signout() {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  localStorage.removeItem('role');
+  // localStorage.removeItem('role');
 }
 
 /**
