@@ -1,5 +1,9 @@
 <template lang="html">
   <section class="">
+    <div>
+      <!--<v-btn success @click.native="changeMode(true)">Edit</v-btn>-->
+      <v-btn info @click.native="viewPublished">View</v-btn>
+    </div>
     <!--<v-sidebar right fixed class="sidebar">
       <v-navbar class="black">
         <p>Editor</p>
@@ -20,7 +24,7 @@
 
 <script lang="js">
   import { mapGetters } from 'vuex';
-  // import authService from '../../services/auth.service';
+  import { CHANGE_MODE } from '../../modules/site/site.module';
 
   export default  {
     name: 'toolbar',
@@ -28,6 +32,9 @@
     // beforeRouteEnter ( to, from, next ) {
     //   authService.protectRoute(next);
     // },    
+    created() {
+      this.$store.commit(CHANGE_MODE, true);
+    },
     mounted() {
 
     },
@@ -37,7 +44,10 @@
       }
     },
     methods: {
-
+      viewPublished() {
+        this.$store.commit(CHANGE_MODE, false)
+        this.$router.push({path: `/published/${this.siteId}`})
+      }
     },
     computed: {
       // heading () {
@@ -45,6 +55,8 @@
       // }
       ...mapGetters([
         'getCompEdit',
+        'getEditMode',
+        'siteId'
       ])
     }
 }

@@ -11,7 +11,6 @@ const state = {
 const mutations = {
   [SIGN_IN]( state, user ) {
     console.log('signed in!!!!!');
-    
     state.isLoggedIn = true;
     state.user = user;
   },
@@ -22,9 +21,9 @@ const mutations = {
 }
 
 const actions = {
-  signin({commit}, {email, password} ) {
+  signin({commit}, {username, password} ) {
     // return is here just so that the signin component will get a promise for a .then and .catch asynchronously
-    return Vue.http.post('http://localhost:3003/login', {username: email, pass: password} )
+    return Vue.http.post('http://localhost:3003/login', {username: username, password: password} )
       .then(res => res.json())
       .then(res => {
         commit(SIGN_IN, res.user);

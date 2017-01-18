@@ -4,6 +4,9 @@ import {SIGN_OUT} from '../../modules/auth/auth.module';
 
 export default {
   name    : 'main-nav',
+  created() {
+    
+  },
   methods : {
     signout() {
       // ask yaron about session reset and logout
@@ -14,11 +17,11 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({
-        isLoggedIn: 'isLoggedIn',
-        user: 'user'
-      }
-    ),
+    ...mapGetters([
+        'isLoggedIn',
+        'user',
+        'siteId'
+     ]),
   }
 
 }

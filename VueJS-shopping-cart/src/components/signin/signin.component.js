@@ -1,6 +1,8 @@
 // import authService from '../../services/auth.service';
 import { SIGN_IN, SIGN_OUT } from '../../modules/auth/auth.module';
 
+import mainNav from '../main-nav';
+
 export default {
   mounted() {
     // console.log(this.$router);
@@ -8,7 +10,7 @@ export default {
   },
   data: () => {
     return {
-      user: { email: 'ogen@derp.com', password: '123456' },
+      user: { username: 'ogen@derp.com', password: '123456' },
       error: ""
     }
   },
@@ -27,5 +29,8 @@ export default {
           this.$router.push('dashboard')
         })
     }
+  },
+  components: {
+    mainNav
   }
 }
