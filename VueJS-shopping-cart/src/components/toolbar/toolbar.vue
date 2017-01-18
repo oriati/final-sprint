@@ -5,7 +5,7 @@
     <v-collapsible-header>Toolbar</v-collapsible-header>
     <v-collapsible-body> 
       <v-card>
-          <div>
+          <div class="content">
             <div class="display-5">Site Name</div>
             <input type="text" name="title" placeholder="your site title" :value="getSite.name" @input="changeHeaders($event)" >
             <div class="display-5">Site URL</div>      
@@ -88,6 +88,10 @@
   .toolbar:hover {
     margin-left: 0px;
     transition: 0.4s;
+  }
+
+  .content {
+    padding: 20px;
   }
 </style>
 

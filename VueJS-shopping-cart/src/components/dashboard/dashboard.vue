@@ -7,14 +7,14 @@
       <v-card v-for="(site, index) in getSites" class="site white--text light-blue darken-4">
         <v-card-row height="200px">
           <v-card-title>
-            <v-btn flat block class="white--text" @click.native="selectSite(index, 'edit')">{{site.name}}</v-btn>
+            <v-btn flat block class="height white--text" @click.native="selectSite(index, 'edit')">{{site.name}}</v-btn>
             <!--{{site.name}} <br>-->
           </v-card-title>
         </v-card-row>
         <v-card-row actions>
-          <v-btn flat block class="white--text" @click.native="selectSite(index, 'edit')">Edit</v-btn>
-          <v-btn flat block class="green--text" @click.native="selectSite(index, 'view')">View</v-btn>
-          <v-btn flat block class="red--text" @click.native="deleteSite(index)">Delete</v-btn>
+          <v-btn flat block class="height white--text" @click.native="selectSite(index, 'edit')">Edit</v-btn>
+          <v-btn flat block class="height white--text" @click.native="selectSite(index, 'view')">View</v-btn>
+          <v-btn flat block class="height red--text" @click.native="deleteSite(index)">Delete</v-btn>
           <v-spacer></v-spacer>
         </v-card-row>
       </v-card>
@@ -37,10 +37,7 @@
         </v-card-row>
       </v-card>
     </div>-->
-    <v-card class="site white lighten-4 white--text">
-        <v-card-row height="200px">
-          <v-card-title>
-      <v-btn v-modal:modal flat block class="green--text" @click.native="createClicked = true">Create New Site</v-btn>
+      <v-btn large v-modal:modal class="add-new-site white--text" @click.native="createClicked = true">Create New Site</v-btn>
       <v-modal id="modal" v-if="createClicked">
         <v-card>
           <v-card-row class="cyan darken-2">
@@ -66,9 +63,6 @@
           </v-card-row>
         </v-card>
       </v-modal>
-          </v-card-title>
-        </v-card-row>
-      </v-card>
     <div>
     </div>
   </section>
@@ -167,7 +161,7 @@
   .card__title {
     height: 100%;
   }
-  .btn {
+  .height {
     height: 100%
   }
   
@@ -186,6 +180,13 @@
   .input-group > input {
     border: none;
     background-color: #fff;
+  }
+
+  .add-new-site {
+    position: fixed;
+    top: 90px;
+    right: 35px;
+    background-color: #EB7F00;
   }
 
 </style>
