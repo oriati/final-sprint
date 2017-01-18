@@ -5,13 +5,15 @@
             <div class="row 150%">
                 <div class="6u 12u$(medium)">
                     <header class="major">
-                        <div class="elem" data-medium="heading">
+                        <div v-if="getEditMode" class="elem" data-medium="heading">
                             <medium-editor :text='propsData.heading' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
+                        <h2 v-else v-html='propsData.heading'></h2>
                     </header>
-                        <div class="elem" data-medium="subHeading">
+                        <div v-if="getEditMode" class="elem" data-medium="subHeading">
                             <medium-editor :text='propsData.subHeading' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
+                        <p v-else v-html='propsData.subHeading'></p>
                 </div>
                 <div class="6u$ 12u$(medium) important(medium)">
                     <span class="image fit"><img :src="propsData.imgSrc" alt="" /></span>
@@ -22,6 +24,8 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
 export default  {
     name: 'img-text-comp',
     props: ['propsData', 'index'],
@@ -29,6 +33,12 @@ export default  {
       return {
       }
     },
+    computed: {
+        ...mapGetters([
+        'getEditMode',
+        
+      ])
+  },
     methods : {
       applyTextEdit: function (text) {
                   this.text = text

@@ -2,17 +2,22 @@
     <section id="header">
         <div class="medium inner">
         <slot></slot>
-            <div class="elem" data-medium="heading">
+            <div v-if="getEditMode" class="elem" data-medium="heading">
                 <medium-editor :text='propsData.heading'  custom-tag='h1' v-on:edit='applyTextEdit'></medium-editor>
             </div>
-            <div class="elem subHeading" data-medium="subHeading">
+                <h1 v-else v-html="propsData.heading"></h1>
+            <div v-if="getEditMode" class="elem subHeading" data-medium="subHeading">
                 <medium-editor :text='propsData.subHeading' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
             </div>
+            <p v-else v-html="propsData.subHeading"></p>
             <!--<h1 class="elem">{{propsData.heading}}</h1>
             <p class="elem">{{propsData.subHeading}}</p>-->
-                <div class="elem button buttonText" data-medium="buttonText">
+                <div v-if="getEditMode" class="elem button buttonText" data-medium="buttonText">
                     <medium-editor class="elem" :text='propsData.buttonText' custom-tag='a' v-on:edit='applyTextEdit'></medium-editor>
                     <!--<a href="#one" class="button scrolly">{{propsData.buttonText}}</a>-->
+                </div>
+                <div v-else class="button">
+                    <a v-html="propsData.buttonText"></a>
                 </div>
                 <!--<button @click="saveChanges">Save</button>-->
         </div>
@@ -20,16 +25,20 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
 export default  {
     name: 'header-comp',
     props: ['propsData', 'index'],
     data() {
       return {
-        
       }
     },
     computed: {
+        ...mapGetters([
+        'getEditMode',
         
+      ])
   },
   methods : {
       applyTextEdit: function (text) {  

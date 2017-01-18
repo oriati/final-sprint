@@ -15,19 +15,23 @@
                 </div>
                 <div class="6u$ 12u$(medium)">
                     <header class="major">
-                        <div class="elem" data-medium="heading">
+                        <div v-if="getEditMode" class="elem" data-medium="heading">
                             <medium-editor :text='propsData.heading' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
+                        <h2 v-else v-html='propsData.heading'></h2>
                     </header>
-                        <div class="elem" data-medium="text1">
+                        <div v-if="getEditMode" class="elem" data-medium="text1">
                             <medium-editor :text='propsData.text1' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
-                        <div class="elem" data-medium="text2">
+                        <p v-else v-html='propsData.text1'></p>
+                        <div v-if="getEditMode" class="elem" data-medium="text2">
                             <medium-editor :text='propsData.text2' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
-                        <div class="elem" data-medium="text3">
+                        <p v-else v-html='propsData.text2'></p>
+                        <div v-if="getEditMode" class="elem" data-medium="text3">
                             <medium-editor :text='propsData.text3' custom-tag='p' v-on:edit='applyTextEdit'></medium-editor>
                         </div>
+                        <p v-else v-html='propsData.text3'></p>
                 </div>
             </div>
         </div>
@@ -35,6 +39,8 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
 export default  {
     name: 'icons-text-comp',
     props: ['propsData', 'index'],
@@ -42,6 +48,12 @@ export default  {
       return {
         }
     },
+    computed: {
+        ...mapGetters([
+        'getEditMode',
+        
+      ])
+  },
     methods : {
       applyTextEdit: function (text) {
                   this.text = text
