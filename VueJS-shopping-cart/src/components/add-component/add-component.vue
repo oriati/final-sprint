@@ -34,15 +34,14 @@
         },
         methods: {
             addComponent() {
-            let addedComponent = {
-                index: this.index,
-                newComp: templates.compsTemplatesInterfaces[this.selected], 
-                compType: this.selected,
+                let addedComponent = {
+                    index: this.index,
+                    newComp: templates.compsTemplatesInterfaces[this.selected], 
+                    compType: this.selected,
+                }
+                this.$store.dispatch('addComponent', addedComponent)
             }
-            this.$store.dispatch('addComponent', addedComponent)
-
         }
-    }
     }
 </script>
 
