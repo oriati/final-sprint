@@ -7,7 +7,8 @@
       <v-card v-for="(site, index) in getSites" class="site white--text light-blue darken-4">
         <v-card-row height="200px">
           <v-card-title>
-            {{site.name}} <br>
+            <v-btn flat block class="white--text" @click.native="selectSite(index, 'edit')">{{site.name}}</v-btn>
+            <!--{{site.name}} <br>-->
           </v-card-title>
         </v-card-row>
         <v-card-row actions>
@@ -163,6 +164,12 @@
 </script>
 
 <style scoped lang="scss">
+  .card__title {
+    height: 100%;
+  }
+  .btn {
+    height: 100%
+  }
   
   .site {
     width: 250px;
