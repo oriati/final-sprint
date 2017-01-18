@@ -1,4 +1,5 @@
 import ContactForm from '../contact-form/contact-form.vue';
+import mainNav from '../main-nav';
 
 
 
@@ -17,6 +18,7 @@ export default  {
   },
   components : {
      ContactForm,
-     'medium-editor': VueMediumEditor
+     'medium-editor': VueMediumEditor,
+     mainNav
   }
 }
