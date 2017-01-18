@@ -10,21 +10,6 @@ const express = require('express'),
 	mongodb = require('mongodb')
 
 const clientSessions = require("client-sessions");
-const multer = require('multer')
-
-// Configure where uploaded files are going
-const uploadFolder = '/uploads';
-var storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, __dirname + uploadFolder);
-	},
-	filename: function (req, file, cb) {
-		cl('file', file);
-		const ext = file.originalname.substr(file.originalname.lastIndexOf('.'));
-		cb(null, file.fieldname + '-' + Date.now() + ext)
-	}
-})
-var upload = multer({storage: storage})
 
 const app = express();
 
@@ -97,15 +82,7 @@ app.get('/data/:objType/:id', function (req, res) {
 	dbConnect()
 		.then((db) => {
 			const collection = db.collection(objType);
-			//let _id;
-			//try {
 			let	_id = new mongodb.ObjectID(objId);
-			//}
-			//catch (e) {
-			//	console.log('ERROR', e);
-			//	return Promise.reject(e);
-			//}
-
 			collection.find({_id: _id}).toArray((err, objs) => {
 						if (err) {
 							cl('Cannot get you that ', err)
@@ -144,8 +121,6 @@ app.delete('/data/:objType/:id', function (req, res) {
 
 // POST - adds 
 app.post('/data/:objType', upload.single('file'), function (req, res) {
-	//console.log('req.file', req.file);
-	// console.log('req.body', req.body);
 	const objType = req.params.objType;
 	cl("POST for " + objType);
 	const obj = req.body;
@@ -157,7 +132,7 @@ app.post('/data/:objType', upload.single('file'), function (req, res) {
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.insert(obj, (err, result) => {
-			if (obj.password) delete obj.password;				// deleting objects password if theres any
+			if (obj.password) delete obj.password;	// deleting objects password if theres any
 			if (err) {
 				cl(`Couldnt insert a new ${objType}`, err)
 				res.json(500, {error: 'Failed to add'})
@@ -177,7 +152,6 @@ app.put('/data/:objType/:id',  function (req, res) {
 	const objId 	= req.params.id;
 	const newObj 	= req.body;
     if (newObj._id && typeof newObj._id === 'string') newObj._id = new mongodb.ObjectID(newObj._id);
-    // cl(`Requested to UPDATE the ${objType} with id: ${objId}`);
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.updateOne({ _id:  new mongodb.ObjectID(objId)}, newObj,
@@ -193,29 +167,6 @@ app.put('/data/:objType/:id',  function (req, res) {
 	});
 });
 
-// Basic Login/Logout/Protected assets
-// app.post('/signup', function (req, res) {
-// 		console.log('request : ', req);
-		
-// 		dbConnect().then((db) => {
-// 		db.collection('user').findOne({username: req.body.username, password: req.body.password}, function (err, user) {
-// 			if (user) {
-// 				cl('Login Succesful');
-//                 delete user.password;
-// 				req.session.user = user;  //refresh the session value
-// 				res.json({token: 'Beareloginr: puk115th@b@5t', user, role : user.role});
-// 			} else {
-// 				cl('Login NOT Succesful');
-// 				req.session.user = null;
-// 				res.json(403, { error: 'Site Retrieval failed' })
-// 			}
-// 		});
-// 	});
-// });
-	// dbConnect().then((db)=> {
-	// // 	db.collection('user').insert(req.body.user)
-	// })
-// })
 
 app.post('/login', function (req, res) {
 	dbConnect().then((db) => {
@@ -268,6 +219,12 @@ app.get('/protected', requireLogin, function (req, res) {
 });
 
 
+
+// Some small time utility functions
+function cl(...params) {
+	console.log.apply(console, params);
+}
+
 // Kickup our server 
 // Note: app.listen will not work with cors and the socket
 // app.listen(3003, function () {
@@ -278,29 +235,4 @@ http.listen(3003, function () {
 	console.log(`DELETE: \t\t ${baseUrl}/{entity}/{id}`);
 	console.log(`PUT (update): \t\t ${baseUrl}/{entity}/{id}`);
 	console.log(`POST (add): \t\t ${baseUrl}/{entity}`);
-
-});
-
-
-io.on('connection', function (socket) {
-	console.log('a user connected');
-	socket.on('disconnect', function () {
-		console.log('user disconnected');
-	});
-	socket.on('chat message', function (msg) {
-		// console.log('message: ' + msg);
-		io.emit('chat message', msg);
-	});
-});
-
-cl('WebSocket is Ready');
-
-// Some small time utility functions
-function cl(...params) {
-	console.log.apply(console, params);
-}
-
-// Just for basic testing the socket
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/test-socket.html');
 });
