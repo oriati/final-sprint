@@ -37,6 +37,10 @@ const actions = {
       .then(res => res.json())
       .then(user => {
       })
+  },
+  signout({commit}) {
+    Vue.http.get('http://localhost:3003/logout')
+      .then(() => {commit(SIGN_OUT)});
   }
 }
 const getters = {

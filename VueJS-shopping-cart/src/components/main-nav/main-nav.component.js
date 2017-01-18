@@ -12,7 +12,8 @@ export default {
       // ask yaron about session reset and logout
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      this.$store.commit(SIGN_OUT);
+      this.$store.dispatch('signout')
+      // this.$store.commit(SIGN_OUT);
       this.$router.push('/');
     },
   },
