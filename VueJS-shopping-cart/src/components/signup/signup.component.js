@@ -1,5 +1,8 @@
 import authService from '../../services/auth.service';
 import {SIGN_IN} from '../../modules/auth/auth.module';
+
+import mainNav from '../main-nav';
+
 export default  {
   data   : () => {
     return {
@@ -18,5 +21,8 @@ export default  {
         this.$router.push({ name: 'main' });
       });
     }
+  },
+  components: {
+    mainNav
   }
 }
