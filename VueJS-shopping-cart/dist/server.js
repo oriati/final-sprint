@@ -14,6 +14,8 @@ const clientSessions = require("client-sessions");
 var port = process.env.PORT || 3003;
 var mongoUrl = process.env.PORT ? 'mongodb://twixapp:misterbit@ds117889.mlab.com:17889/final-sprint' : 'mongodb://localhost:27017/final-sprint';
 
+console.log('mongoUrl', mongoUrl);
+
 const app = express();
 app.use('/', express.static(__dirname));
 
@@ -40,7 +42,6 @@ function dbConnect() {
 
 	return new Promise((resolve, reject) => {
 		// Connection URL
-		var url = 'mongodb://localhost:27017/final-sprint';
 		// Use connect method to connect to the Server
 		mongodb.MongoClient.connect(mongoUrl, function (err, db) {
 			if (err) {
@@ -230,6 +231,7 @@ app.use('/*', express.static(__dirname));
 // Note: app.listen will not work with cors and the socket
 // app.listen(3003, function () {
 http.listen(port, function () {
+	console.log('server running on port '+port)
 	// console.log(`misterREST server is ready at ${baseUrl}`);
 	// console.log(`GET (list): \t\t ${baseUrl}/{entity}`);
 	// console.log(`GET (single): \t\t ${baseUrl}/{entity}/{id}`);
