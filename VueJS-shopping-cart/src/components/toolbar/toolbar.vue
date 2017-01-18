@@ -78,7 +78,6 @@
 </script>
 
 <style scoped lang="scss">
-
   .toolbar {
     width: 400px;
     position: fixed;
