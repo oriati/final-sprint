@@ -102,7 +102,7 @@ export default  {
       applyTextEdit: function (text) {
                   this.text = text
                   let mediumElem = document.querySelector("[data-medium-focused]");
-                  let element = mediumElem.parentNode.getAttribute("data-medium");   
+                  let element = mediumElem.parentElement.getAttribute("data-medium");   
                   let editedText = {
                       text: this.text,
                       compIndex: this.index,
