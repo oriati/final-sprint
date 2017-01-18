@@ -1,16 +1,12 @@
 <template lang="html">
 
   <section class="below-nav">
-    <h1>toolbar Component</h1>
+    <!--<h1>toolbar Component</h1>-->
     <div class="site-headers">
       <input type="text" name="title" placeholder="your site title" :value="getSite.name" @input="changeHeaders($event)" >
       <input type="text" name="url" placeholder="your site url" :value="getSite.url" @input="changeHeaders($event)">
       <v-btn info @click.native="viewPublished">View</v-btn>
     </div>
-      <v-navbar class="black">
-        <p>Editor</p>
-        </v-navbar>
-
       <div class="content">
       <p>Toolbar</p>
       <ul v-for="element in getCompEdit">
@@ -18,7 +14,7 @@
     </ul>
         {{getCompEdit}}
       </div>
-    </v-sidebar>-->
+    </v-sidebar>
 </v-app>
 
   </section>
