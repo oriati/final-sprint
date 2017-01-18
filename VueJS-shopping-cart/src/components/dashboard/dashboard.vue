@@ -11,8 +11,8 @@
           </v-card-title>
         </v-card-row>
         <v-card-row actions>
-          <v-btn flat block class="white--text" @click.native="selectSite(index)">Edit</v-btn>
-          <v-btn flat block class="green--text">View</v-btn>
+          <v-btn flat block class="white--text" @click.native="selectSite(index, 'edit')">Edit</v-btn>
+          <v-btn flat block class="green--text" @click.native="selectSite(index, 'view')">View</v-btn>
           <v-btn flat error class="red--text" @click.native="deleteSite(index)">Delete</v-btn>
           <v-spacer></v-spacer>
         </v-card-row>
