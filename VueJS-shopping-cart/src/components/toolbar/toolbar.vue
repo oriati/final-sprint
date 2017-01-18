@@ -53,7 +53,6 @@
       },
 
       viewPublished() {
-        // this.$store.commit(CHANGE_MODE, isEdit)
         this.$router.push({path: `/published/${this.siteId}`})
       },
       viewEditor() {
@@ -61,13 +60,8 @@
       }
 
     },
-    // mounted () {
-    //   this.siteName = getSite.name
-    // },
+    
     computed: {
-      // heading () {
-      //   return this.$store.getters.heading;
-      // }
       ...mapGetters([
 
         'getSite',
