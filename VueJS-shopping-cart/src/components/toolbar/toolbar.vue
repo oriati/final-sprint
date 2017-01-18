@@ -1,6 +1,5 @@
 <template lang="html">
-  <section class="below-nav">
-    <h1>toolbar Component</h1>
+  <section class="">
     <!--<v-sidebar right fixed class="sidebar">
       <v-navbar class="black">
         <p>Editor</p>

@@ -1,8 +1,8 @@
 <template lang="html">
   
-  <section class="main container below-nav">
+  <section class="container below-nav">
     <!--<h1>main Component</h1>-->
-    <toolbar></toolbar>
+    <!--<toolbar></toolbar>-->
     <editor></editor>
   </section>
 
@@ -46,7 +46,5 @@
 </script>
 
 <style scoped lang="scss">
-  .main {
 
-  }
 </style>

@@ -27,7 +27,7 @@
         },
         data() {
             return {
-                selected: 'Choose a component',
+                selected: 'header-comp',
                 templates: templates,
 
             }

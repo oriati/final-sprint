@@ -1,30 +1,28 @@
 <div class="container below-nav">
+    <img class="bg" src="../../assets/background.jpg" alt="">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-      <h1 class="text-center login-title">Sign up to continue</h1>
+    <div class="signup col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+      <h1 class="text-center login-title white--text">Sign up to start building</h1>
       <div class="account-wall">
-        <img class="profile-img"
-             src="https://www.gravatar.com/avatar?d=monsterid"
-             alt="">
         <form class="form-signin" novalidate @submit.prevent="signup(user)">
 
           <div class="form-group" :class="{'has-error': errors.has('user.email') }">
-            <input type="email" class="form-control" placeholder="Email" autofocus v-model="user.email"
+            <input type="email" class="white--text form-control" placeholder="Email" autofocus v-model="user.email"
                    v-validate.initial="user.email" data-vv-rules="required|email">
-            <span class="text-danger"
+            <span class="text-danger white--text"
                   v-if="errors.has('user.email')">Email please</span>
           </div>
 
 
           <div class="form-group" :class="{'has-error': errors.has('user.password') }">
-            <input class="form-control" placeholder="Password"
+            <input class="white--text form-control" placeholder="Password"
                    type="password"
                    v-model="user.password"
                    v-validate.initial="user.password" data-vv-rules="required|min:6|max:12">
             <span class="text-danger"
-                  v-if="errors.has('user.password:min')">The field must be at least 6 characters.</span>
+                  v-if="errors.has('user.password:min')">Please enter a password of at least 6 characters.</span>
             <span class="text-danger"
-                  v-if="errors.has('user.password:max')">Too much</span>
+                  v-if="errors.has('user.password:max')">Too Long!</span>
           </div>
 
           <button class="btn btn-lg btn-primary btn-block" type="submit">

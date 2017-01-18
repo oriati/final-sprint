@@ -1,7 +1,7 @@
 <template>
     <section id="header">
         <div class="medium inner">
-            <slot></slot>
+        <slot></slot>
             <div class="elem" data-medium="heading">
                 <medium-editor :text='propsData.heading'  custom-tag='h1' v-on:edit='applyTextEdit'></medium-editor>
             </div>
@@ -52,8 +52,15 @@ export default  {
 
 </script>
 
-<style scoped>
+<style scoped lang="css">
+@import './html5up-photon/assets/css/main.css';
+
     .elem:hover {
     box-shadow:inset 0px 0px 0px 2px orange;
   }
+
+  .topright {
+      top:0;
+  }
+
 </style>
