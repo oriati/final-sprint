@@ -20,14 +20,16 @@
   import toolbar from '../toolbar/toolbar';
   
   import { mapGetters } from 'vuex';
+  import { CHANGE_MODE } from '../../modules/site/site.module';
 
   export default  {
     name: 'published',
     props: [],
     created() {
+      this.$store.commit(CHANGE_MODE, false);
       if(!this.siteId) {
       let siteId = this.$route.params.id;
-      this.$store.dispatch('getSite', siteId)
+      this.$store.dispatch('getSite', siteId);
       }
     },
     mounted() {
