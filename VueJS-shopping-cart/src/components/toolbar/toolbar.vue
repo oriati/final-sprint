@@ -84,7 +84,6 @@
 <style scoped lang="scss">
 
   .site-headers {
-    position: fixed;
     left : 2em;
     top : 5em;
     max-width: 300px;
