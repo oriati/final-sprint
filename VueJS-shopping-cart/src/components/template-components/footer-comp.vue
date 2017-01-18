@@ -9,14 +9,17 @@
             <li><a href="#" class="icon alt" :class="propsData.icon5.class"><span class="label">Email</span></a></li>
         </ul>
         <ul class="copyright">
-            <li class="elem" data-medium="copyright">
+            <li v-if='getEditMode' class="elem" data-medium="copyright">
                 <medium-editor :text='propsData.copyright' custom-tag='h1' v-on:edit='applyTextEdit'></medium-editor>
             </li>
+            <h1 v-else v-html='propsData.copyright'></h1>
         </ul>
     </section>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
 export default  {
     name: 'footer-comp',
     props: ['propsData', 'index'],
@@ -24,6 +27,12 @@ export default  {
       return {
     }
 },
+    computed: {
+        ...mapGetters([
+        'getEditMode',
+        
+      ])
+  },
 methods : {
       applyTextEdit: function (text) {
                   this.text = text
