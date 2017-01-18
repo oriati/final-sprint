@@ -6,6 +6,7 @@ export const SELECT_SITE = 'store/SELECT_SITE';
 export const ADD_SITE = 'store/ADD_SITE';
 export const EDIT_TEXT = 'store/EDIT_TEXT';
 export const DELETE_SITE = 'store/DELETE_SITE';
+export const CHANGE_HEADERS = 'store/CHANGE_HEADERS';
 
 import Vue from 'vue';
 import templates from '../../interface/comp.templates';
@@ -19,6 +20,12 @@ const state = {
 
 const actions = {
   // need to figure out what to do with the store. seems like user in needed in both modules and this currUser variable is only a bandade
+  changeHeaders({commit, state}, event){
+    console.log('event', event);
+    commit(CHANGE_HEADERS, event)
+    Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site);
+  },
+  
   getSites({ commit }) {
     let currUser = JSON.parse(localStorage.getItem('user'));
     Vue.http.post('http://localhost:3003/site', { owner: currUser.username })
@@ -71,7 +78,14 @@ const actions = {
 }
 
 const mutations = {
-    [GET_SITES](state, sites) {
+
+  [CHANGE_HEADERS](state, event){
+
+    if (event.target.name === 'title') {state.site.name = event.target.value} 
+    if (event.target.name === 'url') {state.site.url = event.target.value} 
+  },
+
+  [GET_SITES](state, sites) {
       state.sites = sites;
       console.log('new sites: ', state.sites);
     },
@@ -120,6 +134,7 @@ const getters = {
         getComps: state => state.site.comps,
         getCompEdit: state => state.currEdit,
         getSites: state => state.sites,
+        getSite : state => state.site
     }
 
 export default {
