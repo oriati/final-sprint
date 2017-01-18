@@ -1,6 +1,7 @@
 <template lang="html">
 
   <section class="published">
+    <toolbar></toolbar>
     <!--<h1>published Component</h1>-->
     <div v-for="(comp, index) in getComps">
       <component class="comp" :is="comp.type" :propsData="getComps[index].props"></component>
@@ -16,6 +17,7 @@
   import iconsTextComp from '../template-components/icons-text-comp';
   import imgTextComp from '../template-components/img-text-comp';
   import signupComp from '../template-components/signup-comp';
+  import toolbar from '../toolbar/toolbar';
   
   import { mapGetters } from 'vuex';
 
@@ -52,6 +54,7 @@
       signupComp,
       imgTextComp,
       galleryComp,
+      toolbar
     }
 }
 </script>

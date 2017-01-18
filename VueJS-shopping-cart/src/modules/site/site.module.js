@@ -152,6 +152,7 @@ const mutations = {
     state.sites.splice(index, 1)
   },
   [CHANGE_MODE](state, isEdit) {
+    console.log('isEdit:', isEdit);
     state.inEditMode = isEdit;
   }
 

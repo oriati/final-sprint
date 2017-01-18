@@ -1,22 +1,22 @@
 <template lang="html">
 
-  <section class="below-nav">
-    <!--<h1>toolbar Component</h1>-->
-    <div class="site-headers">
-      <input type="text" name="title" placeholder="your site title" :value="getSite.name" @input="changeHeaders($event)" >
-      <input type="text" name="url" placeholder="your site url" :value="getSite.url" @input="changeHeaders($event)">
-      <v-btn info @click.native="viewPublished">View</v-btn>
-    </div>
-      <div class="content">
-      <p>Toolbar</p>
-      <ul v-for="element in getCompEdit">
-        <li>{{element}}</li>
-    </ul>
-        {{getCompEdit}}
-      </div>
-    </v-sidebar>
-</v-app>
-
+  <section class="">
+    <v-collapsible class="toolbar">
+    <v-collapsible-header>Toolbar</v-collapsible-header>
+    <v-collapsible-body> 
+      <v-card>
+          <div>
+            <div class="display-5">Site Name</div>
+            <input type="text" name="title" placeholder="your site title" :value="getSite.name" @input="changeHeaders($event)" >
+            <div class="display-5">Site URL</div>      
+            <input type="text" name="url" placeholder="your site url" :value="getSite.url" @input="changeHeaders($event)">
+          <v-card-row actions>
+            <v-btn flat class="white--text cyan darken-2" info @click.native="viewPublished">Go to View Mode</v-btn>
+          </v-card-row>
+      </v-card>
+    </v-collapsible-body>
+  </li>
+</v-collapsible>
   </section>
 </template>
 
@@ -79,23 +79,20 @@
 
 <style scoped lang="scss">
 
-  .site-headers {
+  .toolbar {
+    width: 400px;
     position: fixed;
-    left : 2em;
-    top : 5em;
-    max-width: 300px;
+    z-index: 100;
+    left: 0;
+    margin-left: -300px; 
+    margin-bottom: 200px;
   }
 
-  .sidebar {
-    margin-top: 100px;
-    display: none;
-  }
-
-  .content {
-    color: #fff;
-  }
-  .content p {
-    margin: 10px;
-    text-align: center;
+  .toolbar:hover {
+    margin-left: 0px;
+    transition: 0.4s;
   }
 </style>
+
+
+
