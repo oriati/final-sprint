@@ -6,7 +6,7 @@
     <div v-for="(comp, index) in getComps">
       <add-component :index="index"></add-component>
       <component class="comp section" :is="comp.type" :propsData="getComps[index].props" :index="index">
-        <button class="comp section" @click="deleteComp(index)">Delete</button>
+        <button class="btn-del comp section" @click="deleteComp(index)">Delete</button>
         <!--<button @click="editComp(index, getComps[index].props)">Edit</button>-->
       </component>
     </div>
@@ -118,6 +118,8 @@
   .editor>*{
     width : 100%;
   }*/
+
+  /****/
   .comp {
     transition: 0.2s;
     position: relative;

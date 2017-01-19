@@ -12,9 +12,7 @@ const express = require('express'),
 const clientSessions = require("client-sessions");
 
 var port = process.env.PORT || 3003;
-var mongoUrl = process.env.PORT ? 'mongodb://twixuser:misterbit@ds117889.mlab.com:17889/final-sprint' : 'mongodb://localhost:27017/final-sprint';
-
-console.log('mongoUrl', mongoUrl);
+var mongoUrl = process.env.PORT ? 'mongodb://twixapp:misterbit@ds117889.mlab.com:17889/final-sprint' : 'mongodb://localhost:27017/final-sprint';
 
 const app = express();
 app.use('/', express.static(__dirname));
@@ -42,6 +40,7 @@ function dbConnect() {
 
 	return new Promise((resolve, reject) => {
 		// Connection URL
+		var url = 'mongodb://localhost:27017/final-sprint';
 		// Use connect method to connect to the Server
 		mongodb.MongoClient.connect(mongoUrl, function (err, db) {
 			if (err) {
@@ -121,27 +120,31 @@ app.delete('/data/:objType/:id', function (req, res) {
 });
 
 // POST - adds 
-app.post('/data/:objType', function (req, res) {
-	const objType = req.params.objType;
-	cl("POST for " + objType);
-	const obj = req.body;
-	delete obj._id;
-	dbConnect().then((db) => {
-		const collection = db.collection(objType);
-		collection.insert(obj, (err, result) => {
-			if (obj.password) delete obj.password;	// deleting objects password if theres any
-			if (err) {
-				cl(`Couldnt insert a new ${objType}`, err)
-				res.json(500, {error: 'Failed to add'})
-			} else {
-				cl(objType + " added");
-				res.json(obj);
-				db.close();
-			}
-		});
-	});
+// app.post('/data/:objType', upload.single('file'), function (req, res) {
+// 	const objType = req.params.objType;
+// 	cl("POST for " + objType);
+// 	const obj = req.body;
+// 	delete obj._id;
+// 	// If there is a file upload, add the url to the obj
+// 	if (req.file) {
+// 		obj.imgUrl = serverRoot + req.file.filename;
+// 	}
+// 	dbConnect().then((db) => {
+// 		const collection = db.collection(objType);
+// 		collection.insert(obj, (err, result) => {
+// 			if (obj.password) delete obj.password;	// deleting objects password if theres any
+// 			if (err) {
+// 				cl(`Couldnt insert a new ${objType}`, err)
+// 				res.json(500, {error: 'Failed to add'})
+// 			} else {
+// 				cl(objType + " added");
+// 				res.json(obj);
+// 				db.close();
+// 			}
+// 		});
+// 	});
 
-});
+// });
 
 // PUT - updates (deleting/adding a component)
 app.put('/data/:objType/:id',  function (req, res) {
@@ -181,7 +184,6 @@ app.post('/login', function (req, res) {
 		});
 	});
 });
-
 app.post('/site', function (req, res) {
 	dbConnect().then((db) => {
 		// returns an array of sites from site collection based on owner
@@ -228,7 +230,6 @@ app.use('/*', express.static(__dirname));
 // Note: app.listen will not work with cors and the socket
 // app.listen(3003, function () {
 http.listen(port, function () {
-	console.log('server running on port '+port)
 	// console.log(`misterREST server is ready at ${baseUrl}`);
 	// console.log(`GET (list): \t\t ${baseUrl}/{entity}`);
 	// console.log(`GET (single): \t\t ${baseUrl}/{entity}/{id}`);
