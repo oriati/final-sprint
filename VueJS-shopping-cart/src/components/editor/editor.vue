@@ -5,12 +5,12 @@
 
     <div v-for="(comp, index) in getComps">
       <add-component :index="index"></add-component>
-      <component class="comp" :is="comp.type" :propsData="getComps[index].props" :index="index">
-        <button @click="deleteComp(index)">Delete</button>
+      <component class="comp section" :is="comp.type" :propsData="getComps[index].props" :index="index">
+        <button class="comp section" @click="deleteComp(index)">Delete</button>
         <!--<button @click="editComp(index, getComps[index].props)">Edit</button>-->
       </component>
     </div>
-    <add-component :index="last"></add-component>
+    <add-component class="comp section" :index="last"></add-component>
     <!--<gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
@@ -48,8 +48,7 @@
       // }
       ...mapGetters([
         'getComps',
-      'getEditMode',
-        
+        'getEditMode',       
       ])
     },
     mounted() {
@@ -75,18 +74,14 @@
           closeOnConfirm: false,
           closeOnCancel: false
         },
-          function (isConfirm) {
-            if (isConfirm) {
-              swal("Deleted!", "Your component has been deleted.", "success");
-              that.$store.dispatch('deleteComp', index)
-              // that.$store.dispatch({
-              //   type: 'deleteComp',
-              //   index: index
-              // })
-            } else {
-              swal("Cancelled", "Your component is safe :)", "error");
-            }
-          });
+        function(isConfirm){
+          if (isConfirm) {
+            swal("Deleted!", "Your component has been deleted.", "success");
+            that.$store.dispatch('deleteComp', index)     
+          } else {
+            swal("Cancelled", "Your component is safe :)", "error");
+          }
+        });   
       },
       editComp(index, elements) {
         console.log('elements', elements);
@@ -110,8 +105,37 @@
 </script>
 
 <style scoped lang="scss">
+  .main.container{
+    padding : 2em;
+  }
   .editor {
-
+    padding: 0;
+  }
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .editor>*{
+    width : 100%;
+  }*/
+  .comp {
+    transition: 0.2s;
+    position: relative;
+  }
+  .btn-del{
+    background: rgba(150, 0, 0, 0.3);
+    position: absolute;
+    right : 2em;
+    top : 2em;
+  }
+  .btn-del:hover{
+    background: rgba(150, 0, 0, 0.6);
+  }
+  .main.style2 button:hover{
+    background: rgba(150, 0, 0, 0.6);
+  }
+  #footer button:hover {
+    background: rgba(150, 0, 0, 0.6);
   }
 
   .comp:hover {
