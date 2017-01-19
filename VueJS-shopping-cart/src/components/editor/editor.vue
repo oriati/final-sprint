@@ -134,6 +134,7 @@
     background: rgba(150, 0, 0, 0.6);
   }
 
+/******/
   .comp:hover {
     box-shadow:inset 0px 0px 0px 5px orange;
   }
