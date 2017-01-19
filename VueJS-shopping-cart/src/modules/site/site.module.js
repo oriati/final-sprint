@@ -23,12 +23,12 @@ const state = {
 
 const actions = {
   // need to figure out what to do with the store. seems like user in needed in both modules and this currUser variable is only a bandade
-  changeHeaders({commit, state}, event){
+  changeHeaders({commit, state}, event) {
     console.log('event', event);
     commit(CHANGE_HEADERS, event)
     Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site);
   },
-  
+
   getSites({ commit }) {
     let currUser = JSON.parse(localStorage.getItem('user'));
     Vue.http.post('http://localhost:3003/site', { owner: currUser.username })
@@ -72,7 +72,7 @@ const actions = {
 
 
   editText({commit, state}, editedText) {
-          console.log('editedText in actions:', editedText)
+    console.log('editedText in actions:', editedText)
     commit(EDIT_TEXT, editedText);
     Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site)
   },
@@ -95,16 +95,16 @@ const actions = {
 
 const mutations = {
 
-  [CHANGE_HEADERS](state, event){
+  [CHANGE_HEADERS](state, event) {
 
-    if (event.target.name === 'title') {state.site.name = event.target.value} 
-    if (event.target.name === 'url') {state.site.url = event.target.value} 
+    if (event.target.name === 'title') { state.site.name = event.target.value }
+    if (event.target.name === 'url') { state.site.url = event.target.value }
   },
 
   [GET_SITES](state, sites) {
-      state.sites = sites;
-      console.log('new sites: ', state.sites);
-    },
+    state.sites = sites;
+    console.log('new sites: ', state.sites);
+  },
 
   [DELETE_COMP](state, {index}) {
     console.log('deleting component ', index);
@@ -120,11 +120,18 @@ const mutations = {
     // console.log('mutation:', newComp);
     console.log('addedComponent:', addedComponent);
     // console.log('compsTemplatesInterfaces[newComp]', templates.compsTemplatesInterfaces[newComp]);
-    state.site.comps.splice(addedComponent.index + 1, 0, {
-      name: '',
-      type: addedComponent.compType,
-      props: addedComponent.newComp
-    })
+    if (addedComponent.index !== 'last') {
+      state.site.comps.splice(addedComponent.index, 0, {
+        type: addedComponent.compType,
+        props: addedComponent.newComp
+      })
+    }
+    else {
+      state.site.comps.push({
+                      type: addedComponent.compType, 
+                      props: addedComponent.newComp
+                    });
+    }
   },
 
   [GET_SITE](state, site) {
@@ -132,9 +139,9 @@ const mutations = {
     state.site = site;
   },
 
-   [EDIT_TEXT]( state, editedText ){
-        state.site.comps[editedText.compIndex].props[editedText.element] = editedText.text;
-        },
+  [EDIT_TEXT](state, editedText) {
+    state.site.comps[editedText.compIndex].props[editedText.element] = editedText.text;
+  },
 
   [SELECT_SITE](state, index) {
     state.site = state.sites[index];
@@ -166,7 +173,7 @@ const getters = {
   getSites: state => state.sites,
   getEditMode: state => state.inEditMode,
   siteId: state => state.site._id,
-  getSite : state => state.site
+  getSite: state => state.site
 }
 
 

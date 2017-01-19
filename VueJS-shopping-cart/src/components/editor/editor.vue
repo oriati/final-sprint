@@ -2,15 +2,15 @@
   <div class="editor container">
     <!--<h1>editor Component</h1>-->
     <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
-    <add-component class="section" :index=0></add-component>
-    
+
     <div v-for="(comp, index) in getComps">
+      <add-component :index="index"></add-component>
       <component class="comp section" :is="comp.type" :propsData="getComps[index].props" :index="index">
-        <button class="btn-del" @click="deleteComp(index)">Delete</button>
+        <button class="comp section" @click="deleteComp(index)">Delete</button>
         <!--<button @click="editComp(index, getComps[index].props)">Edit</button>-->
       </component>
-      <add-component class="section" :index="index"></add-component>
     </div>
+    <add-component class="comp section" :index="last"></add-component>
     <!--<gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
@@ -23,6 +23,7 @@
   import { mapGetters } from 'vuex';
 
   // import authService from '../../services/auth.service';
+  import { CHANGE_MODE } from '../../modules/site/site.module';
   import footerComp from '../template-components/footer-comp';
   import galleryComp from '../template-components/gallery-comp';
   import headerComp from '../template-components/header-comp';
@@ -38,6 +39,9 @@
     beforeRouteEnter(to, from, next) {
       authService.protectRoute(next);
     },
+    created() {
+      this.$store.commit(CHANGE_MODE, true);
+    },
     computed: {
       // heading () {
       //   return this.$store.getters.heading;
@@ -52,7 +56,7 @@
     },
     data() {
       return {
-        // string: "signup-comp",
+        last: 'last'
       }
     },
 
@@ -86,7 +90,7 @@
           index: index,
           elements: elements,
         })
-        }
+      }
     },
     components: {
       headerComp,
