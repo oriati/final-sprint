@@ -26,12 +26,12 @@ const actions = {
   changeHeaders({commit, state}, event) {
     console.log('event', event);
     commit(CHANGE_HEADERS, event)
-    Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site);
+    Vue.http.put(`data/site/${state.site._id}`, state.site);
   },
 
   getSites({ commit }) {
     let currUser = JSON.parse(localStorage.getItem('user'));
-    Vue.http.post('http://localhost:3003/site', { owner: currUser.username })
+    Vue.http.post('site', { owner: currUser.username })
       .then(res => res.json())
       .then(sites => {
         // console.log('site module', sites);
@@ -42,14 +42,14 @@ const actions = {
   deleteComp({commit, state}, index) {
     commit(DELETE_COMP, { index })
     console.log('commiting delete- comp ', index);
-    Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site)
+    Vue.http.put(`data/site/${state.site._id}`, state.site)
   },
 
 
   addComponent({commit, state}, addedComponent) {
     // console.log('component in actions:', state.site._id)
     commit(ADD_COMPONENT, addedComponent);
-    Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site)
+    Vue.http.put(`data/site/${state.site._id}`, state.site)
 
   },
 
@@ -62,7 +62,7 @@ const actions = {
 
   getSite({commit}, id) {
     console.log('siteid', id);
-    Vue.http.get(`http://localhost:3003/data/site/${id}`)
+    Vue.http.get(`data/site/${id}`)
       .then(res => res.json())
       .then(site => {
         console.log('site module', site);
@@ -74,12 +74,12 @@ const actions = {
   editText({commit, state}, editedText) {
     console.log('editedText in actions:', editedText)
     commit(EDIT_TEXT, editedText);
-    Vue.http.put(`http://localhost:3003/data/site/${state.site._id}`, state.site)
+    Vue.http.put(`data/site/${state.site._id}`, state.site)
   },
 
   createSite({commit}, newSite) {
     let currUser = JSON.parse(localStorage.getItem('user'));
-    Vue.http.post('http://localhost:3003/data/site', { name: newSite.name, url: newSite.url, owner: currUser.username, isPublished: false, comps: [] })
+    Vue.http.post('data/site', { name: newSite.name, url: newSite.url, owner: currUser.username, isPublished: false, comps: [] })
       .then(res => res.json())
       .then(site => {
         commit(ADD_SITE, site)
@@ -87,7 +87,7 @@ const actions = {
   },
   deleteSite({commit}, index) {
     console.log('site to delete: ', state.sites[index]._id);
-    Vue.http.delete(`http://localhost:3003/data/site/${state.sites[index]._id}`)
+    Vue.http.delete(`data/site/${state.sites[index]._id}`)
       .then(() => commit(DELETE_SITE, index))
 
   }
