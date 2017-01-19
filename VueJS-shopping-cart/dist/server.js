@@ -12,7 +12,7 @@ const express = require('express'),
 const clientSessions = require("client-sessions");
 
 var port = process.env.PORT || 3003;
-var mongoUrl = process.env.PORT ? 'mongodb://twixapp:misterbit@ds117889.mlab.com:17889/final-sprint' : 'mongodb://localhost:27017/final-sprint';
+var mongoUrl = process.env.PORT ? 'mongodb://twixuser:misterbit@ds117889.mlab.com:17889/final-sprint' : 'mongodb://localhost:27017/final-sprint';
 
 console.log('mongoUrl', mongoUrl);
 
@@ -181,6 +181,7 @@ app.post('/login', function (req, res) {
 		});
 	});
 });
+
 app.post('/site', function (req, res) {
 	dbConnect().then((db) => {
 		// returns an array of sites from site collection based on owner
