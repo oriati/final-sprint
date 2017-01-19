@@ -3,7 +3,7 @@
         <div class="container">
             <slot></slot>
             <div class="row 150%">
-                <div class="6u 12u$(medium)">
+                <div class="6u 12u(medium)">
                     <ul class="major-icons">
                         <li><span class="icon style1 major" v-bind:class="propsData.icon1"></span></li>
                         <li><span class="icon style2 major" v-bind:class="propsData.icon2"></span></li>
@@ -13,7 +13,7 @@
                         <li><span class="icon style6 major" v-bind:class="propsData.icon6"></span></li>
                     </ul>
                 </div>
-                <div class="6u$ 12u$(medium)">
+                <div class="6u 12u(medium)">
                     <header class="major">
                         <div v-if="getEditMode" class="elem" data-medium="heading">
                             <medium-editor :text='propsData.heading' custom-tag='h2' v-on:edit='applyTextEdit'></medium-editor>
