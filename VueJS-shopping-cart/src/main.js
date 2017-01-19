@@ -8,6 +8,8 @@ import store from './store';
 import router from './routes';
 import MainNav from './components/main-nav';
 
+Vue.http.options.root = (process.env.NODE_ENV==='development' ? 'http://localhost:3003' : '');
+
 const app = new Vue({
   router,
   store,

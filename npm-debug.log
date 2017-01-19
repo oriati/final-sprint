@@ -1,22 +1,24 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'C:\\nodejs\\node.exe',
-1 verbose cli   'C:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'run',
-1 verbose cli   'dev' ]
-2 info using npm@3.10.10
-3 info using node@v7.2.1
-4 verbose stack Error: ENOENT: no such file or directory, open 'C:\Course\Projects\final-sprint\package.json'
-5 verbose cwd C:\Course\Projects\final-sprint
-6 error Windows_NT 10.0.14393
-7 error argv "C:\\nodejs\\node.exe" "C:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "dev"
-8 error node v7.2.1
-9 error npm  v3.10.10
-10 error path C:\Course\Projects\final-sprint\package.json
-11 error code ENOENT
-12 error errno -4058
-13 error syscall open
-14 error enoent ENOENT: no such file or directory, open 'C:\Course\Projects\final-sprint\package.json'
-15 error enoent ENOENT: no such file or directory, open 'C:\Course\Projects\final-sprint\package.json'
-15 error enoent This is most likely not a problem with npm itself
-15 error enoent and is related to npm not being able to find a file.
-16 verbose exit [ -4058, true ]
+1 verbose cli   'deployHeroku' ]
+2 info using npm@4.0.5
+3 info using node@v6.3.1
+4 verbose config Skipping project config: /Users/aarontaylor/.npmrc. (matches userconfig)
+5 verbose stack Error: ENOENT: no such file or directory, open '/Users/aarontaylor/package.json'
+5 verbose stack     at Error (native)
+6 verbose cwd /Users/aarontaylor/Desktop/bootcamp/final-sprint
+7 error Darwin 14.5.0
+8 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "deployHeroku"
+9 error node v6.3.1
+10 error npm  v4.0.5
+11 error path /Users/aarontaylor/package.json
+12 error code ENOENT
+13 error errno -2
+14 error syscall open
+15 error enoent ENOENT: no such file or directory, open '/Users/aarontaylor/package.json'
+16 error enoent ENOENT: no such file or directory, open '/Users/aarontaylor/package.json'
+16 error enoent This is most likely not a problem with npm itself
+16 error enoent and is related to npm not being able to find a file.
+17 verbose exit [ -2, true ]

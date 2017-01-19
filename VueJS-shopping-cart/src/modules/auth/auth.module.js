@@ -23,7 +23,7 @@ const mutations = {
 const actions = {
   signin({commit}, {username, password}) {
     // return is here just so that the signin component will get a promise for a .then and .catch asynchronously
-    return Vue.http.post('http://localhost:3003/login', { username, password })
+    return Vue.http.post('login', { username, password })
       .then(res => res.json())
       .then(user => {
         console.log('res', user);
@@ -33,13 +33,13 @@ const actions = {
       })
   },
   signup({commit}, user) {
-    return Vue.http.post('http://localhost:3003/data/user', user)
+    return Vue.http.post('data/user', user)
       .then(res => res.json())
       .then(user => {
       })
   },
   signout({commit}) {
-    Vue.http.get('http://localhost:3003/logout')
+    Vue.http.get('logout')
       .then(() => {commit(SIGN_OUT)});
   }
 }
