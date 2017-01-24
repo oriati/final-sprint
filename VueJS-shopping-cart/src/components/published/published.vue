@@ -17,6 +17,7 @@
   import iconsTextComp from '../template-components/icons-text-comp';
   import imgTextComp from '../template-components/img-text-comp';
   import signupComp from '../template-components/signup-comp';
+  import videoComp from '../template-components/video-comp';
   import toolbar from '../toolbar/toolbar';
   
   import { mapGetters } from 'vuex';
@@ -56,6 +57,7 @@
       signupComp,
       imgTextComp,
       galleryComp,
+      videoComp,
       toolbar
     }
 }
@@ -63,6 +65,9 @@
 
 <style scoped lang="scss">
   .published {
-
+    max-width: 1200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;    
   }
 </style>

@@ -120,31 +120,27 @@ app.delete('/data/:objType/:id', function (req, res) {
 });
 
 // POST - adds 
-// app.post('/data/:objType', upload.single('file'), function (req, res) {
-// 	const objType = req.params.objType;
-// 	cl("POST for " + objType);
-// 	const obj = req.body;
-// 	delete obj._id;
-// 	// If there is a file upload, add the url to the obj
-// 	if (req.file) {
-// 		obj.imgUrl = serverRoot + req.file.filename;
-// 	}
-// 	dbConnect().then((db) => {
-// 		const collection = db.collection(objType);
-// 		collection.insert(obj, (err, result) => {
-// 			if (obj.password) delete obj.password;	// deleting objects password if theres any
-// 			if (err) {
-// 				cl(`Couldnt insert a new ${objType}`, err)
-// 				res.json(500, {error: 'Failed to add'})
-// 			} else {
-// 				cl(objType + " added");
-// 				res.json(obj);
-// 				db.close();
-// 			}
-// 		});
-// 	});
+app.post('/data/:objType', function (req, res) {
+	const objType = req.params.objType;
+	cl("POST for " + objType);
+	const obj = req.body;
+	delete obj._id;
+	dbConnect().then((db) => {
+		const collection = db.collection(objType);
+		collection.insert(obj, (err, result) => {
+			if (obj.password) delete obj.password;	// deleting objects password if theres any
+			if (err) {
+				cl(`Couldnt insert a new ${objType}`, err)
+				res.json(500, {error: 'Failed to add'})
+			} else {
+				cl(objType + " added");
+				res.json(obj);
+				db.close();
+			}
+		});
+	});
 
-// });
+});
 
 // PUT - updates (deleting/adding a component)
 app.put('/data/:objType/:id',  function (req, res) {
