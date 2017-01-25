@@ -2,7 +2,7 @@
   <div class="editor container">
     <div v-for="(comp, index) in getComps">
       <add-component :index="index"></add-component>
-      <button class="btn-del comp section" @click="deleteComp(index)">Delete</button>
+      <button class="btn-del section" @click="deleteComp(index)">Delete</button>
       <component class="comp section" :is="comp.type" :propsData="getComps[index].props" :index="index">
       </component>
     </div>
@@ -161,13 +161,18 @@
     position: relative;
   }
   .btn-del{
-    background: rgba(150, 0, 0, 0.3);
-    /*position: absolute;*/
-    /*right : 2em;*/
-    /*top : 2em;*/
+    background: #d61717;
+    color: white;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    margin-right: 4.7em;
   }
   .btn-del:hover{
-    background: rgba(150, 0, 0, 0.6);
+    background: #ea1919;
+  }
+  .btn-del:active{
+    background: #ad1313;
   }
   .main.style2 button:hover{
     background: rgba(150, 0, 0, 0.6);
