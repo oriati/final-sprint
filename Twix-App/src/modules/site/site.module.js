@@ -161,7 +161,7 @@ const getters = {
   getSites: state => state.sites,
   getEditMode: state => state.inEditMode,
   siteId: state => state.site._id,
-  getSite: state => state.site
+  getSite: state => state.site,
 }
 
 

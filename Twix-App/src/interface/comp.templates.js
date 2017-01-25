@@ -76,7 +76,7 @@ export default {
         },
         'video-comp': {
             name: 'video-comp',
-            youtubeUrl: 'https://www.youtube.com/watch?v=hLEoictM8p4'
+            youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
         }
     }
 };

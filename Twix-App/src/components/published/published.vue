@@ -66,10 +66,10 @@
 </script>
 
 <style scoped lang="scss">
-  .published {
+  /*.published {
     max-width: 1200px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;    
-  }
+  }*/
 </style>
