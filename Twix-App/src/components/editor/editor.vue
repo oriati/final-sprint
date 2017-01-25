@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="editor container">
-    <div v-for="(comp, index) in getComps">
+
+    <div class="comps" v-for="(comp, index) in getComps">
       <add-component :index="index"></add-component>
       <button class="btn-del section" @click="deleteComp(index)">Delete</button>
       <component class="comp section" :is="comp.type" :propsData="getComps[index].props" :index="index">
@@ -8,11 +9,6 @@
     </div>
     <add-component class="comp section" :index="last"></add-component>
     <vue-toastr ref="toastr"></vue-toastr>
-    <!--<gallery-comp></gallery-comp>
-    <icons-text-comp></icons-text-comp>
-    <img-text-comp></img-text-comp>
-    <signup-comp></signup-comp>
-    <footer-comp></footer-comp>-->
   </div>
 </template>
 
@@ -28,6 +24,7 @@
   import imgTextComp from '../template-components/img-text-comp';
   import signupComp from '../template-components/signup-comp';
   import videoComp from '../template-components/video-comp';
+  import mapComp from '../template-components/map-comp';
 
   import addComponent from '../add-component/add-component';
 
@@ -135,6 +132,8 @@
       imgTextComp,
       galleryComp,
       videoComp,
+      mapComp,
+
       addComponent
     }
   }
@@ -156,6 +155,9 @@
   }*/
 
   /****/
+  .comps {
+    text-align: center;
+  }
   .comp {
     transition: 0.2s;
     position: relative;

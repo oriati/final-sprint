@@ -68,6 +68,12 @@ export default {
             },
             copyright: 'UntitledDesign: HTML5 UP'
         },
+        'map-comp': {
+            name: 'map-comp',
+            heading: 'This is a heading',
+            subHeading: 'This is a sub-heading. Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.',
+            loc: { lat: 32.088189, lng: 34.803140, address: 'habonim 4, givatayim israel' }
+        },
         'video-comp': {
             name: 'video-comp',
             youtubeUrl: 'https://www.youtube.com/watch?v=hLEoictM8p4'
