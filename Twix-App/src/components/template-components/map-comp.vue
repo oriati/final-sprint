@@ -121,6 +121,7 @@
   .map-comp {
     /*display: flex;*/
     /*flex-wrap: wrap;*/
+    margin-top: 50px;
   }
 
   .part {
@@ -129,6 +130,7 @@
 
   .map-input {
     display: flex;
+    margin-top: 60px;
   }
 
   .map-info {

@@ -2,7 +2,7 @@
 
   <section v-if="isLoggedIn">
     <v-collapsible class="toolbar">
-    <v-collapsible-header>Your Twix</v-collapsible-header>
+    <v-collapsible-header>Settings</v-collapsible-header>
     <v-collapsible-body> 
       <v-card>
           <div class="content">
@@ -11,8 +11,8 @@
             <div class="display-5">Site URL</div>      
             <input type="text" name="url" placeholder="your site url" :value="getSite.url" @input="changeHeaders($event)">
           <v-card-row actions>
-            <v-btn v-if="getEditMode" flat class="white--text cyan darken-2" info @click.native="viewPublished">Go to View Mode</v-btn>
-            <v-btn v-else flat class="white--text cyan darken-2" info @click.native="viewEditor">Go to Edit Mode</v-btn>
+            <v-btn v-if="getEditMode" class="view-btn white--text cyan darken-2" @click.native="viewPublished">Go to View Mode</v-btn>
+            <v-btn v-else class="view-btn white--text cyan darken-2" @click.native="viewEditor">Go to Edit Mode</v-btn>
           </v-card-row>
       </v-card>
     </v-collapsible-body>
@@ -79,10 +79,14 @@
   .toolbar {
     width: 22em;
     position: fixed;
-    z-index: 100;
+    z-index: 1000;
     right: 0;
     margin-right: -300px; 
     margin-bottom: 200px;
+  }
+
+  .view-btn:hover {
+    color: black;
   }
 
   .toolbar:hover {
