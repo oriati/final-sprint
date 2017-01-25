@@ -11,6 +11,7 @@
       </component>
     </div>
     <add-component class="comp section" :index="last"></add-component>
+    <vue-toastr ref="toastr"></vue-toastr>
     <!--<gallery-comp></gallery-comp>
     <icons-text-comp></icons-text-comp>
     <img-text-comp></img-text-comp>
@@ -61,25 +62,42 @@
     },
 
     methods: {
+    // checkTstr(){
+    //   console.log('chk');
+      
+    //   this.$refs.toastr.s("SUCCESS MESSAGE");
+    // },
       deleteComp(index) {
         var that = this;
         swal({
           title: "Are you sure?",
-          text: "You will not be able to recover this imaginary file!",
+          text: "You will not be able to recover this section!",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
           confirmButtonText: "Yes, delete it!",
           cancelButtonText: "No, cancel please!",
-          closeOnConfirm: false,
-          closeOnCancel: false
         },
         function(isConfirm){
           if (isConfirm) {
-            swal("Deleted!", "Your component has been deleted.", "success");
+            that.$refs.toastr.Add({
+                title: "Section Deleted",
+                msg: "",
+                clickClose: true,
+                timeout: 2000,
+                position: "toast-bottom-left",
+                type: "warning"
+            });
             that.$store.dispatch('deleteComp', index)     
           } else {
-            swal("Cancelled", "Your component is safe :)", "error");
+              that.$refs.toastr.Add({
+                  title: "Delete Canceled",
+                  msg: "", 
+                  clickClose: true,
+                  timeout: 2000,
+                  position: "toast-bottom-left",
+                  type: "success"
+              });
           }
         });   
       },

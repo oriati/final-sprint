@@ -1,0 +1,10 @@
+{
+ "name": "vuejs-event-manager-example",
+ "version": "1.0.0",
+ "description": "coding academy mini sprint example",
+ "author": "Alon Danoch",
+ "private": true,
+ "scripts": {
+   "postinstall": "npm install express body-parser cors mongodb client-sessions"
+ }
+}

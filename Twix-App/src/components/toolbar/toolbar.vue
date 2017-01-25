@@ -2,7 +2,7 @@
 
   <section v-if="isLoggedIn">
     <v-collapsible class="toolbar">
-    <v-collapsible-header>Toolbar</v-collapsible-header>
+    <v-collapsible-header>Your Twix</v-collapsible-header>
     <v-collapsible-body> 
       <v-card>
           <div class="content">
@@ -77,16 +77,16 @@
 
 <style scoped lang="scss">
   .toolbar {
-    width: 400px;
+    width: 22em;
     position: fixed;
     z-index: 100;
-    left: 0;
-    margin-left: -300px; 
+    right: 0;
+    margin-right: -300px; 
     margin-bottom: 200px;
   }
 
   .toolbar:hover {
-    margin-left: 0px;
+    margin-right: 0px;
     transition: 0.4s;
   }
 
