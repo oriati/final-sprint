@@ -66,7 +66,6 @@
     // },
       deleteComp(index) {
         var that = this;
-<<<<<<< HEAD:Twix-App/src/components/editor/editor.vue
         swal({
           title: "Are you sure?",
           text: "You will not be able to recover this section!",
@@ -106,7 +105,6 @@
           index: index,
           elements: elements,
         })
-=======
         swal(
           {
             title: "Are you sure?",
