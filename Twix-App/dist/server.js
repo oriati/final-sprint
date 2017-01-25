@@ -12,7 +12,7 @@ const express = require('express'),
 const clientSessions = require("client-sessions");
 
 var port = process.env.PORT || 3003;
-var mongoUrl = process.env.PORT ? 'mongodb://twixapp:misterbit@ds117889.mlab.com:17889/final-sprint' : 'mongodb://localhost:27017/final-sprint';
+var mongoUrl = process.env.PORT ? 'mongodb://twixuser:misterbit@ds117889.mlab.com:17889/final-sprint' : 'mongodb://localhost:27017/final-sprint';
 
 const app = express();
 app.use('/', express.static(__dirname));
@@ -125,7 +125,6 @@ app.post('/data/:objType', function (req, res) {
 	cl("POST for " + objType);
 	const obj = req.body;
 	delete obj._id;
-
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.insert(obj, (err, result) => {

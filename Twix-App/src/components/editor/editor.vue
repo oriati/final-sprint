@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="editor container">
+
     <div class="comps" v-for="(comp, index) in getComps">
       <add-component :index="index"></add-component>
       <button class="btn-del comp section" @click="deleteComp(index)">Delete</button>
@@ -7,6 +8,7 @@
       </component>
     </div>
     <add-component class="comp section" :index="last"></add-component>
+    <vue-toastr ref="toastr"></vue-toastr>
   </div>
 </template>
 
@@ -54,8 +56,52 @@
     },
 
     methods: {
+    // checkTstr(){
+    //   console.log('chk');
+      
+    //   this.$refs.toastr.s("SUCCESS MESSAGE");
+    // },
       deleteComp(index) {
         var that = this;
+        swal({
+          title: "Are you sure?",
+          text: "You will not be able to recover this section!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          cancelButtonText: "No, cancel please!",
+        },
+        function(isConfirm){
+          if (isConfirm) {
+            that.$refs.toastr.Add({
+                title: "Section Deleted",
+                msg: "",
+                clickClose: true,
+                timeout: 2000,
+                position: "toast-bottom-left",
+                type: "warning"
+            });
+            that.$store.dispatch('deleteComp', index)     
+          } else {
+              that.$refs.toastr.Add({
+                  title: "Delete Canceled",
+                  msg: "", 
+                  clickClose: true,
+                  timeout: 2000,
+                  position: "toast-bottom-left",
+                  type: "success"
+              });
+          }
+        });   
+      },
+      editComp(index, elements) {
+        console.log('elements', elements);
+        this.$store.dispatch({
+          type: 'editComp',
+          index: index,
+          elements: elements,
+        })
         swal(
           {
             title: "Are you sure?",
@@ -87,6 +133,7 @@
       galleryComp,
       videoComp,
       mapComp,
+
       addComponent
     }
   }
@@ -111,7 +158,6 @@
   .comps {
     text-align: center;
   }
-
   .comp {
     transition: 0.2s;
     position: relative;

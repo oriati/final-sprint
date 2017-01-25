@@ -1,5 +1,4 @@
 <template lang="html">
-
   <section class="video-comp">
     <div class="video-input" v-if="getEditMode">
       <v-text-input class="input black--text" placeholder="Please provide Youtube Video Adress" v-model="videoUrl"></v-text-input>
@@ -47,7 +46,8 @@
     },
     computed: {
        ...mapGetters([
-        'getEditMode'
+        'getEditMode',
+        'getComps'
       ])
     }
   }
