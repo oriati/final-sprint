@@ -1,10 +1,9 @@
 <template lang="html">
 
   <section class="video-comp">
-    <h1>video-comp Component</h1>
-    <div v-if="getEditMode">
+    <div class="video-input" v-if="getEditMode">
       <v-text-input class="input black--text" placeholder="Please provide Youtube Video Adress" v-model="videoUrl"></v-text-input>
-      <v-btn success @click.native="saveVideo">Save</v-btn>
+      <v-btn class="save" success large @click.native="saveVideo">Save</v-btn>
     </div>
     <div class="video-container">
       <iframe class="youtube" frameborder="0" allowfullscreen></iframe>
@@ -48,8 +47,7 @@
     },
     computed: {
        ...mapGetters([
-        'getEditMode',
-        'getComps'
+        'getEditMode'
       ])
     }
   }
@@ -57,10 +55,21 @@
 
 <style scoped lang="scss">
 
+.video-input {
+  display: flex;
+}
+
+.save {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
 .video-container {
 	position:relative;
 	padding-bottom:56.25%;
-	padding-top:30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+  padding-top:30px;
 	height:0;
 	overflow:hidden;
 }
