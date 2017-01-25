@@ -125,10 +125,7 @@ app.post('/data/:objType', function (req, res) {
 	cl("POST for " + objType);
 	const obj = req.body;
 	delete obj._id;
-	// If there is a file upload, add the url to the obj
-	if (req.file) {
-		obj.imgUrl = serverRoot + req.file.filename;
-	}
+
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.insert(obj, (err, result) => {

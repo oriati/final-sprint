@@ -1,13 +1,9 @@
 <template lang="html">
   <div class="editor container">
-    <!--<h1>editor Component</h1>-->
-    <!--<header-comp :propsData="getComps[0].props"></header-comp>-->
-
     <div v-for="(comp, index) in getComps">
       <add-component :index="index"></add-component>
+      <button class="btn-del comp section" @click="deleteComp(index)">Delete</button>
       <component class="comp section" :is="comp.type" :propsData="getComps[index].props" :index="index">
-        <button class="btn-del comp section" @click="deleteComp(index)">Delete</button>
-        <!--<button @click="editComp(index, getComps[index].props)">Edit</button>-->
       </component>
     </div>
     <add-component class="comp section" :index="last"></add-component>
@@ -31,6 +27,7 @@
   import iconsTextComp from '../template-components/icons-text-comp';
   import imgTextComp from '../template-components/img-text-comp';
   import signupComp from '../template-components/signup-comp';
+  import videoComp from '../template-components/video-comp';
 
   import addComponent from '../add-component/add-component';
 
@@ -49,7 +46,7 @@
       // }
       ...mapGetters([
         'getComps',
-        'getEditMode',       
+      'getEditMode'      
       ])
     },
     mounted() {
@@ -69,6 +66,7 @@
     // },
       deleteComp(index) {
         var that = this;
+<<<<<<< HEAD:Twix-App/src/components/editor/editor.vue
         swal({
           title: "Are you sure?",
           text: "You will not be able to recover this section!",
@@ -108,6 +106,27 @@
           index: index,
           elements: elements,
         })
+=======
+        swal(
+          {
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel please!",
+            closeOnConfirm: true,
+            closeOnCancel: true
+          },
+          function (isConfirm) {
+            if (isConfirm) {
+              // swal("Deleted!", "Your component has been deleted.", "success");
+              that.$store.dispatch('deleteComp', index)
+            } else {
+              // swal("Cancelled", "Your component is safe :)", "error");
+            }
+          });
       }
     },
     components: {
@@ -117,6 +136,7 @@
       signupComp,
       imgTextComp,
       galleryComp,
+      videoComp,
       addComponent
     }
   }
@@ -144,9 +164,9 @@
   }
   .btn-del{
     background: rgba(150, 0, 0, 0.3);
-    position: absolute;
-    right : 2em;
-    top : 2em;
+    /*position: absolute;*/
+    /*right : 2em;*/
+    /*top : 2em;*/
   }
   .btn-del:hover{
     background: rgba(150, 0, 0, 0.6);

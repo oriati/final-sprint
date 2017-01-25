@@ -23,7 +23,7 @@ const state = {
 
 const actions = {
   // need to figure out what to do with the store. seems like user in needed in both modules and this currUser variable is only a bandade
-  changeHeaders({commit, state}, event) {
+  changeHeaders({commit}, event) {
     console.log('event', event);
     commit(CHANGE_HEADERS, event)
     Vue.http.put(`data/site/${state.site._id}`, state.site);
@@ -39,24 +39,17 @@ const actions = {
       })
   },
 
-  deleteComp({commit, state}, index) {
+  deleteComp({commit}, index) {
     commit(DELETE_COMP, { index })
     console.log('commiting delete- comp ', index);
     Vue.http.put(`data/site/${state.site._id}`, state.site)
   },
 
 
-  addComponent({commit, state}, addedComponent) {
+  addComponent({commit}, addedComponent) {
     // console.log('component in actions:', state.site._id)
     commit(ADD_COMPONENT, addedComponent);
     Vue.http.put(`data/site/${state.site._id}`, state.site)
-
-  },
-
-
-  editComp({commit}, index, elements) {
-    console.log('editComp in actions:', index, elements)
-    commit(EDIT_COMP, index, elements);
 
   },
 
@@ -71,7 +64,7 @@ const actions = {
   },
 
 
-  editText({commit, state}, editedText) {
+  editText({commit}, editedText) {
     console.log('editedText in actions:', editedText)
     commit(EDIT_TEXT, editedText);
     Vue.http.put(`data/site/${state.site._id}`, state.site)
@@ -109,11 +102,6 @@ const mutations = {
   [DELETE_COMP](state, {index}) {
     console.log('deleting component ', index);
     state.site.comps.splice(index, 1);
-  },
-  [EDIT_COMP](state, {index, elements}) {
-    console.log('component to edit:', index, elements);
-    state.currEdit = elements;
-    console.log('state.currEdit', state.currEdit);
   },
 
   [ADD_COMPONENT](state, addedComponent) {
