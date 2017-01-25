@@ -17,7 +17,6 @@ const app = new Vue({
   store,
   components: {
     MainNav,
-    
   }
 }).$mount('#app');
 

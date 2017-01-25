@@ -18,6 +18,7 @@
   import imgTextComp from '../template-components/img-text-comp';
   import signupComp from '../template-components/signup-comp';
   import videoComp from '../template-components/video-comp';
+  import mapComp from '../template-components/map-comp';
   import toolbar from '../toolbar/toolbar';
   
   import { mapGetters } from 'vuex';
@@ -58,6 +59,7 @@
       imgTextComp,
       galleryComp,
       videoComp,
+      mapComp,
       toolbar
     }
 }
