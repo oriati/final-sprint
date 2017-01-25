@@ -57,6 +57,7 @@
 
 .video-input {
   display: flex;
+  margin-top: 60px;
 }
 
 .save {
@@ -67,7 +68,7 @@
 .video-container {
 	position:relative;
 	padding-bottom:56.25%;
-	margin-top: 10px;
+	margin-top: 80px;
 	margin-bottom: 10px;
   padding-top:30px;
 	height:0;
