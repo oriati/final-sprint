@@ -12,6 +12,8 @@ npm install
 server with hot reload at localhost:3003
 ``npm start``
 
+choose 'f' for using the files system storage
+
 
 # Twix (cd Twix-app/)
 
