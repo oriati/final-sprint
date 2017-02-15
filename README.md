@@ -6,7 +6,8 @@ latest build ver http://twix-app.herokuapp.com/
 
 # install dependencies
 ``
-npm install
+cd REST-server/npm install
+cd twix-app/npm install
 ``
 
 # run server
