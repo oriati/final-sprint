@@ -1,4 +1,4 @@
-# final-sprint
+# Twix
 Final project at coding academy - a web page builder app
 
 latest build ver http://twix-app.herokuapp.com/
