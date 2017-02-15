@@ -3,7 +3,7 @@ Final project at coding academy - a web page builder app
 
 latest build ver http://twix-app.herokuapp.com/
 
-# Server side cd Rest-server
+# Server side (cd Rest-server/)
 install dependencies
 ``
 npm install
