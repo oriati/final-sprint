@@ -12,20 +12,15 @@ npm install
 server with hot reload at localhost:3003
 ``npm run dev``
 
-# install dependencies
-``
-cd REST-server/npm install
-``
 
+# Twix (cd Twix-app/)
+
+install dependencies
 ``
 cd twix-app/npm install
 ``
 
-# run server
-``
-cd REST-server/npm start
-``
-# run Twix
+run Twix
 ``
 cd twix-app/npm run dev
 ``
